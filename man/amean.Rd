@@ -4,12 +4,10 @@
 \alias{amean}
 \title{Arithmetic mean}
 \usage{
-amean(x, na.rm = TRUE)
+amean(x)
 }
 \arguments{
 \item{x}{A logical/numeric vector.}
-
-\item{na.rm}{The option.}
 }
 \value{
 Return the arithmetic mean of a vector, as standard 'mean' function.
@@ -18,12 +16,12 @@ Return the arithmetic mean of a vector, as standard 'mean' function.
 `amean` takes a logical/numeric vector and returns the arithmetic mean.
 }
 \details{
-None.
+`amean` function is as standard `mean` function, but with option `na.rm = TRUE` by default.
 }
 \examples{
 x <- c(1.2, 2.2, 2.1, NA, 2.6)
-amean(x, na.rm = FALSE)
-amean(x, na.rm = TRUE)
+amean(x)
+x <- c(NA, NA, NA)
 amean(x)
 
 }

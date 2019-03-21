@@ -4,12 +4,10 @@
 \alias{asd}
 \title{Arithmetical standard deviation}
 \usage{
-asd(x, na.rm = TRUE)
+asd(x)
 }
 \arguments{
 \item{x}{A logical/numeric vector.}
-
-\item{na.rm}{The option `na.rm` indicates if `NA` values must be ignored (`na.rm = TRUE` by default) or not (`na.rm = FALSE`). Return `NA` if there are `NA` values and `na.rm = FALSE`.}
 }
 \value{
 Return the arithmetic standard deviation of a vector, as standard `stats::sd` function.
@@ -18,5 +16,5 @@ Return the arithmetic standard deviation of a vector, as standard `stats::sd` fu
 `asd` takes a logical/numeric vector and returns the arithmetic standard deviation.
 }
 \details{
-None.
+`asd` function is as standard `sd` function, but with option `na.rm = TRUE` by default.
 }

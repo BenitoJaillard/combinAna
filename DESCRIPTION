@@ -1,10 +1,11 @@
 Package: combinAna
 Title: Element clustering that best accounts for an assembly property or function
 Version: 0.0.0.9000
-Authors@R: person("Benoit", "Jaillard", email = "benoit.jaillard@inra.fr", role = c("aut", "cre"))
+Authors@R: person("Benoît", "Jaillard", email = "benoit.jaillard@inra.fr", role = c("aut", "cre"))
 Description: Set of functions for formatting the data, clustering the elements and plotting the results in different ways.
 Depends: R (>= 3.4.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+Imports: stats

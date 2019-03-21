@@ -4,12 +4,10 @@
 \alias{gsd}
 \title{Geometric standard deviation}
 \usage{
-gsd(x, na.rm = TRUE)
+gsd(x)
 }
 \arguments{
 \item{x}{A logical/numeric vector.}
-
-\item{na.rm}{The option `na.rm` indicates if `NA` values must be ignored (`na.rm = TRUE` by default) or not (`na.rm = FALSE`). Return `NA` if there are `NA` values and `na.rm = FALSE`.}
 }
 \value{
 Return the geometric standard deviation of a vector.

@@ -4,14 +4,12 @@
 \alias{wgsd}
 \title{Weighted geometric standard deviation}
 \usage{
-wgsd(x, w, na.rm = TRUE)
+wgsd(x, w)
 }
 \arguments{
 \item{x}{A logical/numeric vector.}
 
 \item{w}{A vector of numeric weights, of same length as x.}
-
-\item{na.rm}{The option `na.rm` indicates if `NA` values must be ignored (`na.rm = TRUE` by default) or not (`na.rm = FALSE`). Return `NA` if there are `NA` values and `na.rm = FALSE`.}
 }
 \value{
 Return the weighted geometric standard deviation of a vector.
