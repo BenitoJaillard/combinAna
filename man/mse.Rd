@@ -2,20 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{mse}
 \alias{mse}
-\title{Compute the Mean Square Error (MSE) of two numeric vectors}
+\title{Mean Square Error (MSE) of two numeric vectors}
 \usage{
 mse(x, y)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
-
-\item{y}{A logical/numeric vector.}
+\item{x, y}{numeric vectors of same length.}
 }
 \value{
 Return the Mean Square Error (MSE).
 }
 \description{
-`mse` returns the Mean Square Error (MSE) of two numeric vectors.
+Take two numeric vectors and return their Mean Square Error (MSE).
 }
 \details{
 None.

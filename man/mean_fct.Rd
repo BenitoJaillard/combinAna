@@ -4,18 +4,18 @@
 \alias{mean_fct}
 \title{Switch for arithmetic or geometric mean according to option "opt.mean"}
 \usage{
-mean_fct(x, opt.mean)
+mean_fct(x, opt.mean = c("amean", "gmean"))
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 
-\item{opt.mean}{The option `opt.mean` equals `amean` or `gmean`. It has no default value.}
+\item{opt.mean}{equals `amean` or `gmean` according to that mean value must be computed with arithmetic or geometric formula. There is no default value.}
 }
 \value{
-Return the arithmetic or geometric mean of a vector.
+Return the arithmetic or geometric mean of the vector `x` according to opt.mean.
 }
 \description{
-`mean_fct` takes a logical/numeric vector and returns its weighted geometric standard deviation.
+Take the numeric vector and return its weighted geometric standard deviation.
 }
 \details{
 None.

@@ -7,13 +7,13 @@
 gmean(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the geometric mean of a vector.
 }
 \description{
-`gmean` takes a logical/numeric vector and returns its geometric mean.
+Take a numeric vector and return its geometric mean.
 }
 \details{
 None.

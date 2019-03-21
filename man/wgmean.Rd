@@ -7,15 +7,15 @@
 wgmean(x, w)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 
-\item{w}{A vector of weights, of same length as x.}
+\item{w}{a vector of weights, of same length as x.}
 }
 \value{
 Return the weighted geometric standard deviation of a vector.
 }
 \description{
-`wgmean` takes a logical/numeric vector and returns its weighted geometric mean.
+Take a numeric vector and return its weighted geometric mean.
 }
 \details{
 None.

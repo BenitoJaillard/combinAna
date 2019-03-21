@@ -7,15 +7,15 @@
 wasd(x, w)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 
-\item{w}{A vector of numeric weights, of same length as x.}
+\item{w}{a vector of numeric weights, of same length as x.}
 }
 \value{
 Return the weighted arithmetic standard deviation of a vector.
 }
 \description{
-`wasd` takes a logical/numeric vector and returns the weighted arithmetic standard deviation.
+Take a numeric vector and return the weighted arithmetic standard deviation.
 }
 \details{
 None.

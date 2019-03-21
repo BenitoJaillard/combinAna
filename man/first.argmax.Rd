@@ -2,18 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{first.argmax}
 \alias{first.argmax}
-\title{Returns the index of the first maximum value of a vector.}
+\title{Index of the first maximum value of a vector}
 \usage{
 first.argmax(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the index of the first (the lowest index) maximum values of a vector.
 }
 \description{
-`first.argmax` returns the index of the first (the lowest index) maximum values of a vector.
+Take a numeric vector and return the index of the first (the lowest index) maximum values.
 }
 \details{
 `first.argmax` function is as the standard `min(which.max)` function. #'

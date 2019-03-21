@@ -7,21 +7,15 @@
 amean(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the arithmetic mean of a vector, as standard 'mean' function.
 }
 \description{
-`amean` takes a logical/numeric vector and returns the arithmetic mean.
+Take a numeric vector and return the arithmetic mean.
 }
 \details{
-`amean` function is as standard `mean` function, but with option `na.rm = TRUE` by default.
+`amean` function does as the standard `stats::mean` function, but with option `na.rm = TRUE` by default.
 }
-\examples{
-x <- c(1.2, 2.2, 2.1, NA, 2.6)
-amean(x)
-x <- c(NA, NA, NA)
-amean(x)
-
-}
+\keyword{internal}

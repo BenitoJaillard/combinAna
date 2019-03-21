@@ -2,21 +2,21 @@
 % Please edit documentation in R/local.Stats.R
 \name{R2mse}
 \alias{R2mse}
-\title{Compute the Coefficient of Determination (R2) of two numeric vectors}
+\title{Coefficient of Determination (R2) of two numeric vectors}
 \usage{
 R2mse(prd, obs)
 }
 \arguments{
-\item{prd}{A logical/numeric vector of predicted values.}
+\item{prd}{numeric vector of predicted values.}
 
-\item{obs}{A logical/numeric vector of reference values.}
+\item{obs}{numeric vector of reference values of same `length` as `prd`.}
 }
 \value{
 Return the Coefficient of Determination (R2).
 }
 \description{
-`R2mse` returns the Coefficient of Determination (R2) of two numeric vectors.
+Take two numeric vectors and return their Coefficient of Determination (R2).
 }
 \details{
-Be careful, the `R2mse` function is not symmetrical. The first argument is vector of estimated, modelled or predicted values, the second argument is the vector of reference.
+Be careful, the `R2mse` function is not symmetrical. The first argument `prd` is vector of estimated, modelled or predicted values, the second argument `obs` is the vector of reference.
 }

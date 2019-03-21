@@ -7,15 +7,15 @@
 wgsd(x, w)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 
-\item{w}{A vector of numeric weights, of same length as x.}
+\item{w}{a vector of numeric weights, of same length as x.}
 }
 \value{
 Return the weighted geometric standard deviation of a vector.
 }
 \description{
-`wgsd` takes a logical/numeric vector and returns its weighted geometric standard deviation.
+Take a numeric vector and return its weighted geometric standard deviation.
 }
 \details{
 None.

@@ -7,15 +7,15 @@
 wamean(x, w)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 
-\item{w}{A vector of numeric weights, of same length as x.}
+\item{w}{a vector of numeric weights, of same length as x.}
 }
 \value{
 Return the weighted arithmetic mean of a vector.
 }
 \description{
-`wamean` takes a logical/numeric vector and returns the weighted arithmetic mean.
+Take a numeric vector and return the weighted arithmetic mean.
 }
 \details{
 None.

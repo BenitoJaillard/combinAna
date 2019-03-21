@@ -2,22 +2,22 @@
 % Please edit documentation in R/local.Stats.R
 \name{pmse}
 \alias{pmse}
-\title{Compute the Probability associated with the Coeficient of Determination (R2) of two numeric vectors}
+\title{Probability associated with the Coefficient of Determination (R2) of two numeric vectors}
 \usage{
 pmse(prd, obs, nbK)
 }
 \arguments{
-\item{prd}{A logical/numeric vector.}
+\item{prd}{a numeric vector of predicted values.}
 
-\item{obs}{A logical/numeric vector.}
+\item{obs}{a numeric vector of reference values of same `length` as `prd`.}
 
-\item{nbK}{A scalar. `nbK`should be higher than 1. Returns an error if not.}
+\item{nbK}{an integer. `nbK`should be higher than 1: return an error if not.}
 }
 \value{
-Return the Probability associated with the Coeficient of Determination (R2).
+Return the Probability associated with the Coefficient of Determination (R2).
 }
 \description{
-`pmse` returns the Probability associated with the Coefficient of Determination (R2) of two numeric vectors.
+Take two numeric vectors and return the Probability associated with their Coefficient of Determination (R2).
 }
 \details{
 Be careful, the `pmse` function is not symmetrical. The first argument `prd` is vector of estimated, modelled or predicted values, the second argument `obs` is the vector of reference.

@@ -2,20 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{rss}
 \alias{rss}
-\title{Compute the Residual Sum of Square (RSS) of two numeric vectors}
+\title{Residual Sum of Square (RSS) of two numeric vectors}
 \usage{
 rss(x, y)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
-
-\item{y}{A logical/numeric vector.}
+\item{x, y}{numeric vectors of same length.}
 }
 \value{
 Return the Residual Sum of Square (RSS).
 }
 \description{
-`rss` returns the Residual Sum of Square (RSS) of two numeric vectors.
+Take two numeric vectors and return their Residual Sum of Square (RSS).
 }
 \details{
 None.

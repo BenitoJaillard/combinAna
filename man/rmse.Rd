@@ -2,20 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{rmse}
 \alias{rmse}
-\title{Compute the Root Mean Square Error RMSE) of two numeric vectors}
+\title{Root Mean Square Error RMSE) of two numeric vectors}
 \usage{
 rmse(x, y)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
-
-\item{y}{A logical/numeric vector.}
+\item{x, y}{numeric vectors of same length.}
 }
 \value{
 Return the Root Mean Square Error (RMSE).
 }
 \description{
-`rmse` returns the Root Mean Square Error (RMSE) of two numeric vectors.
+Take two numeric vectors and return their Root Mean Square Error (RMSE).
 }
 \details{
 None.

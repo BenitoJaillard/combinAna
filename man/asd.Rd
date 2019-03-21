@@ -7,14 +7,15 @@
 asd(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
-Return the arithmetic standard deviation of a vector, as standard `stats::sd` function.
+Return the arithmetic standard deviation of a vector, as the standard `stats::sd` function.
 }
 \description{
-`asd` takes a logical/numeric vector and returns the arithmetic standard deviation.
+Take a numeric vector and return the arithmetic standard deviation.
 }
 \details{
 `asd` function is as standard `sd` function, but with option `na.rm = TRUE` by default.
 }
+\keyword{internal}

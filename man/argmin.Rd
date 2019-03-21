@@ -2,18 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{argmin}
 \alias{argmin}
-\title{Returns the index of the minimum values of a vector.}
+\title{Index of the minimum values of a vector}
 \usage{
 argmin(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the index of the minimum values of a vector.
 }
 \description{
-`argmin` returns the index of the minimum values of a vector.
+Take a numeric vector and return the index of its minimum values.
 }
 \details{
 `argmin` function is as the standard `which.min` function.

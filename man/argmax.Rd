@@ -2,18 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{argmax}
 \alias{argmax}
-\title{Returns the index of the maximum values of a vector.}
+\title{Index of the maximum values of a vector}
 \usage{
 argmax(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the index of the maximum values of a vector.
 }
 \description{
-`argmax` returns the index of the maximum values of a vector.
+Take a numeric vector and return the index of the maximum values.
 }
 \details{
 `argmax` function is as the standard `which.max` function.

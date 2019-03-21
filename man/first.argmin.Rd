@@ -2,18 +2,18 @@
 % Please edit documentation in R/local.Stats.R
 \name{first.argmin}
 \alias{first.argmin}
-\title{Returns the index of the first minimum value of a vector.}
+\title{Index of the first minimum value of a vector}
 \usage{
 first.argmin(x)
 }
 \arguments{
-\item{x}{A logical/numeric vector.}
+\item{x}{a numeric vector.}
 }
 \value{
 Return the index of the first (the lowest index) minimum values of a vector.
 }
 \description{
-`first.argmin` returns the index of the first (the lowest index) minimum values of a vector.
+Take a numeric vector and return the index of the first (the lowest index) minimum values.
 }
 \details{
 `first.argmin` function is as the standard `min(which.min)` function. #'
