@@ -5,6 +5,8 @@
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
+loadNamespace("stats")
+
 EPSILON <- 1e-15
 
 
@@ -19,12 +21,20 @@ EPSILON <- 1e-15
 #' @title Arithmetic mean
 #'
 #' @description Take a numeric vector and return the arithmetic mean.
+#'
 #' @usage amean(x)
+#'
 #' @param x a numeric vector.
-#' @return Return the arithmetic mean of a vector, as standard 'mean' function.
-#' @details `amean` function does as the standard `stats::mean` function, but with option `na.rm = TRUE` by default.
+#'
+#' @return Return the arithmetic mean of a vector.
+#'
+#' @details The function \code{amean} works as the standard function
+#'  \code{stats::mean}, but with option \code{na.rm = TRUE} by default.
 #'
 #' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 
 amean <- function(x) {
 
@@ -38,13 +48,24 @@ amean <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Arithmetical standard deviation
-#' @description Take a numeric vector and return the arithmetic standard deviation.
+#'
+#' @description Take a numeric vector and return the arithmetic standard
+#'  deviation.
+#'
 #' @usage asd(x)
+#'
 #' @param x a numeric vector.
-#' @return Return the arithmetic standard deviation of a vector, as the standard `stats::sd` function.
-#' @details `asd` function is as standard `sd` function, but with option `na.rm = TRUE` by default.
+#'
+#' @return Return the arithmetic standard deviation of a vector,
+#'  as the standard function \code{stats::sd}.
+#'
+#' @details The fucntion \code{asd} works as the standard function \code{sd},
+#'  but with option \code{na.rm = TRUE} by default.
 #'
 #' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 asd <- function(x) {
 
@@ -58,15 +79,23 @@ asd <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Weighted arithmetical mean
+#'
 #' @description Take a numeric vector and return the weighted arithmetic mean.
+#'
 #' @usage wamean(x, w)
+#'
 #' @param x a numeric vector.
-#' @param w a vector of numeric weights, of same length as x.
+#'
+#' @param w a vector of numeric weights, of same length as \code{x}.
 #'
 #' @return Return the weighted arithmetic mean of a vector.
+#'
 #' @details None.
 #'
 #' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 wamean <- function(x, w) {
 
@@ -82,15 +111,23 @@ wamean <- function(x, w) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Weighted arithmetic standard deviation
-#' @description Take a numeric vector and return the weighted arithmetic standard deviation.
+#'
+#' @description Take a numeric vector and return the weighted
+#' arithmetic standard deviation.
+#'
 #' @usage wasd(x, w)
+#'
 #' @param x a numeric vector.
-#' @param w a vector of numeric weights, of same length as x.
+#'
+#' @param w a vector of numeric weights, of same length as \code{x}.
 #'
 #' @return Return the weighted arithmetic standard deviation of a vector.
+#'
 #' @details None.
 #'
 #' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 wasd <- function(x, w) {
 
@@ -108,14 +145,20 @@ wasd <- function(x, w) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Geometric mean
+#'
 #' @description Take a numeric vector and return its geometric mean.
+#'
 #' @usage gmean(x)
+#'
 #' @param x a numeric vector.
 #'
-#' @return Return the geometric mean of a vector.
+#' @return Return the geometric mean of the vector \code{x}.
+#'
 #' @details None.
 #'
-#' @keywords internal
+#' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 gmean <- function(x) {
 
@@ -130,14 +173,21 @@ gmean <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Geometric standard deviation
-#' @description Take a numeric vector and return its geometricstandard deviation.
+#'
+#' @description Take a numeric vector and return its geometric
+#' standard deviation.
+#'
 #' @usage gsd(x)
+#'
 #' @param x a numeric vector.
 #'
-#' @return Return the geometric standard deviation of a vector.
+#' @return Return the geometric standard deviation of the vector \code{x}.
+#'
 #' @details None.
 #'
-#' @keywords internal
+#' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 gsd <- function(x) {
 
@@ -153,15 +203,23 @@ gsd <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Weighted geometric mean
+#'
 #' @description Take a numeric vector and return its weighted geometric mean.
+#'
 #' @usage wgmean(x, w)
+#'
 #' @param x a numeric vector.
+#'
 #' @param w a vector of weights, of same length as x.
 #'
-#' @return Return the weighted geometric standard deviation of a vector.
+#' @return Return the weighted geometric standard deviation of the vector \code{x}.
+#'
 #' @details None.
 #'
 #' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 wgmean <- function(x, w) {
 
@@ -177,15 +235,25 @@ wgmean <- function(x, w) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Weighted geometric standard deviation
-#' @description Take a numeric vector and return its weighted geometric standard deviation.
-#' @usage wgsd(x, w)
-#' @param x a numeric vector.
-#' @param w a vector of numeric weights, of same length as x.
 #'
-#' @return Return the weighted geometric standard deviation of a vector.
+#' @description Take a numeric vector and return its weighted geometric
+#'  standard deviation.
+#'
+#' @usage wgsd(x, w)
+#'
+#' @param x a numeric vector.
+#'
+#' @param w a vector of numeric weights, of same length as \code{x}.
+#'
+#' @return Return the weighted geometric standard deviation
+#' of the vector \code{x}.
+#'
 #' @details None.
 #'
 #' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 wgsd <- function(x, w) {
 
@@ -200,16 +268,29 @@ wgsd <- function(x, w) {
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
-#' @title Switch for arithmetic or geometric mean according to option "opt.mean"
-#' @description Take the numeric vector and return its weighted geometric standard deviation.
-#' @usage mean_fct(x, opt.mean = c("amean", "gmean"))
-#' @param x a numeric vector.
-#' @param opt.mean equals `amean` or `gmean` according to that mean value must be computed with arithmetic or geometric formula. There is no default value.
+#' @title Switch for arithmetic or geometric mean according
+#' to option "opt.mean"
 #'
-#' @return Return the arithmetic or geometric mean of the vector `x` according to opt.mean.
+#' @description Take the numeric vector and return its weighted
+#' geometric standard deviation.
+#'
+#' @usage mean_fct(x, opt.mean = c("amean", "gmean"))
+#'
+#' @param x a numeric vector.
+#'
+#' @param opt.mean equals \code{"amean"} or \code{"gmean"}
+#' according to that mean value must be computed with arithmetic
+#' or geometric formula. There is no default value.
+#'
+#' @return Return the arithmetic or geometric mean of the vector
+#'  \code{x} according to \code{opt.mean}.
+#'
 #' @details None.
 #'
 #' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 mean_fct <- function(x, opt.mean = c("amean", "gmean")) {
 
@@ -230,14 +311,22 @@ mean_fct <- function(x, opt.mean = c("amean", "gmean")) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Residual Sum of Square (RSS) of two numeric vectors
-#' @description Take two numeric vectors and return their Residual Sum of Square (RSS).
+#'
+#' @description Take two numeric vectors and return their
+#' Residual Sum of Square (RSS).
+#'
 #' @usage rss(x, y)
+#'
 #' @param x,y numeric vectors of same length.
 #'
 #' @return Return the Residual Sum of Square (RSS).
+#'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 rss <- function(x, y) {
 
@@ -250,14 +339,22 @@ rss <- function(x, y) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Mean Square Error (MSE) of two numeric vectors
-#' @description Take two numeric vectors and return their Mean Square Error (MSE).
+#'
+#' @description Take two numeric vectors and return their
+#' Mean Square Error (MSE).
+#'
 #' @usage mse(x, y)
+#'
 #' @param x,y numeric vectors of same length.
 #'
 #' @return Return the Mean Square Error (MSE).
+#'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 mse <- function(x, y) {
 
@@ -273,14 +370,22 @@ mse <- function(x, y) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Root Mean Square Error RMSE) of two numeric vectors
-#' @description Take two numeric vectors and return their Root Mean Square Error (RMSE).
+#'
+#' @description Take two numeric vectors and return their
+#' Root Mean Square Error (RMSE).
+#'
 #' @usage rmse(x, y)
+#'
 #' @param x,y numeric vectors of same length.
 #'
 #' @return Return the Root Mean Square Error (RMSE).
+#'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 rmse <- function(x, y) {
 
@@ -292,15 +397,26 @@ rmse <- function(x, y) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Coefficient of Determination (R2) of two numeric vectors
-#' @description Take two numeric vectors and return their Coefficient of Determination (R2).
+#'
+#' @description Take two numeric vectors and return their Coefficient
+#'  of Determination (R2).
+#'
 #' @usage R2mse(prd, obs)
+#'
 #' @param prd numeric vector of predicted values.
-#' @param obs numeric vector of reference values of same `length` as `prd`.
+#'
+#' @param obs numeric vector of reference values of \code{length(prd)}.
 #'
 #' @return Return the Coefficient of Determination (R2).
-#' @details Be careful, the `R2mse` function is not symmetrical. The first argument `prd` is vector of estimated, modelled or predicted values, the second argument `obs` is the vector of reference.
+#'
+#' @details Be careful, the function \code{R2mse} is not symmetrical.
+#' The first argument \code{prd} is vector of estimated, modelled or
+#' predicted values, the second argument \code{obs} is the vector
+#' of reference.
 #'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 R2mse <- function(prd, obs) {
 
@@ -323,17 +439,33 @@ R2mse <- function(prd, obs) {
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
-#' @title Probability associated with the Coefficient of Determination (R2) of two numeric vectors
-#' @description Take two numeric vectors and return the Probability associated with their Coefficient of Determination (R2).
+#' @title Probability associated with the Coefficient of Determination (R2)
+#'  of two numeric vectors
+#'
+#' @description Take two numeric vectors and return the
+#'  Probability associated with their Coefficient of Determination (R2).
+#'
 #' @usage pmse(prd, obs, nbK)
+#'
 #' @param prd a numeric vector of predicted values.
-#' @param obs a numeric vector of reference values of same `length` as `prd`.
-#' @param nbK an integer. `nbK`should be higher than 1: return an error if not.
 #'
-#' @return Return the Probability associated with the Coefficient of Determination (R2).
-#' @details Be careful, the `pmse` function is not symmetrical. The first argument `prd` is vector of estimated, modelled or predicted values, the second argument `obs` is the vector of reference.
+#' @param obs a numeric vector of reference values of \code{length(prd)}.
 #'
-#' @export
+#' @param nbK an integer. \code{nbK}should be higher than 1: return an
+#'  error if not.
+#'
+#' @return Return the Probability associated with the Coefficient
+#' of Determination (R2).
+#'
+#' @details Be careful, the function \code{pmse} is not symmetrical.
+#' The first argument \code{prd} is vector of estimated, modelled
+#' or predicted values, the second argument \code{obs} is
+#' the vector of reference.
+#'
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 pmse <- function(prd, obs, nbK) {
 
@@ -370,20 +502,31 @@ pmse <- function(prd, obs, nbK) {
 #
 #  AIC and related functions                                               ####
 #
-#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title AIC of two numeric vectors
-#' @description Take two numeric vectors and return their Akaike Information Criterion (AIC) computed from the Residuals Sum of Square and the number of used parameters.
+#'
+#' @description Take two numeric vectors and return their Akaike Information
+#'  Criterion (AIC) computed from the Residuals Sum of Square and
+#'  the number of used parameters.
+#'
 #' @usage .AIC(x, y, nbK)
+#'
 #' @param x,y numeric vectors of same length.
-#' @param nbK an integer. `nbK`should be higher than 1: return an error if not.
+#'
+#' @param nbK an integer. \code{nbK}should be higher than 1: return
+#' an error if not.
 #'
 #' @return Return the the Akaike Information Criterion (AIC).
+#'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 .AIC <- function(x, y, nbK) {
 
@@ -407,15 +550,27 @@ pmse <- function(prd, obs, nbK) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title AICc of two numeric vectors
-#' @description Take two numeric vectors and return the Akaike Information Criterion (AICc) computed from the Residuals Sum of Square and the number of used parameters, and corrected for .
+#'
+#' @description Take two numeric vectors and return the Akaike Information
+#'  Criterion (AICc) computed from the Residuals Sum of Square and
+#'   the number of used parameters, and corrected for .
+#'
 #' @usage .AICc(x, y, nbK)
+#'
 #' @param x,y numeric vectors of same length.
-#' @param nbK an integer. `nbK`should be higher than `length(x)`: return an error if not.
+#'
+#' @param nbK an integer. \code{nbK}should be higher than \code{length(x)}: return an error if not.
 #'
 #' @return Return the the Akaike Information Criterion (AIC).
-#' @details Be careful, the `pmse` function is not symmetrical. The first argument is vector of estimated, modelled or predicted values, the second argument is the vector of reference.
 #'
-#' @export
+#' @details Be careful, the function \code{pmse} is not symmetrical.
+#' The first argument is vector of estimated, modelled or predicted values,
+#'  the second argument is the vector of reference.
+#'
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 .AICc <- function(x, y, nbK) {
 
@@ -439,14 +594,23 @@ pmse <- function(prd, obs, nbK) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Index of the minimum values of a vector
-#' @description Take a numeric vector and return the index of its minimum values.
+#'
+#' @description Take a numeric vector and return the index of
+#' its minimum values.
+#'
 #' @usage argmin(x)
+#'
 #' @param x a numeric vector.
 #'
 #' @return Return the index of the minimum values of a vector.
-#' @details `argmin` function is as the standard `which.min` function.
 #'
-#' @export
+#' @details The function \code{argmin} works as the standard
+#' function \code{which.min}.
+#'
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 argmin <- function(x) {
 
@@ -460,15 +624,24 @@ argmin <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Index of the first minimum value of a vector
-#' @description Take a numeric vector and return the index of the first (the lowest index) minimum values.
-#' @usage first.argmin(x)
+#'
+#' @description Take a numeric vector and return the index of the first
+#' (the lowest index) minimum values.
+#'
+#' @usage firstArgmin(x)
+#'
 #' @param x a numeric vector.
 #'
 #' @return Return the index of the first (the lowest index) minimum values of a vector.
-#' @details `first.argmin` function is as the standard `min(which.min)` function. #'
+#'
+#' @details The function \code{firstArgmin} works as the
+#' standard function \code{min(which.min)}.
+#'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-first.argmin <- function(x) {
+firstArgmin <- function(x) {
 
   x <- x[!is.na(x)]
 
@@ -483,14 +656,23 @@ first.argmin <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Index of the maximum values of a vector
-#' @description Take a numeric vector and return the index of the maximum values.
+#'
+#' @description Take a numeric vector and return the index of the
+#'  maximum values.
+#'
 #' @usage argmax(x)
+#'
 #' @param x a numeric vector.
 #'
 #' @return Return the index of the maximum values of a vector.
-#' @details `argmax` function is as the standard `which.max` function.
 #'
-#' @export
+#' @details The function \code{argmax} works as the standard function
+#'  \code{which.max}.
+#'
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 argmax <- function(x) {
 
@@ -504,15 +686,25 @@ argmax <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Index of the first maximum value of a vector
-#' @description Take a numeric vector and return the index of the first (the lowest index) maximum values.
-#' @usage first.argmax(x)
+#'
+#' @description Take a numeric vector and return the index of
+#' the first (the lowest index) maximum values.
+#'
+#' @usage firstArgmax(x)
+#'
 #' @param x a numeric vector.
 #'
-#' @return Return the index of the first (the lowest index) maximum values of a vector.
-#' @details `first.argmax` function is as the standard `min(which.max)` function. #'
+#' @return Return the index of the first (the lowest index)
+#'  maximum values of a vector.
+#'
+#' @details The function \code{firstArgmax} works as the
+#' standard function \code{min(which.max)}.
+#'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-first.argmax <- function(x) {
+firstArgmax <- function(x) {
 
   x <- x[!is.na(x)]
 
@@ -535,17 +727,26 @@ first.argmax <- function(x) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Number of Stirling of second kind
-#' @description Take an integer and return the number of Stirling of second kind, that is the number of all possible partitions into k clusters among n elements
+#'
+#' @description Take an integer and return the number
+#'  of Stirling of second kind, that is the number
+#'  of all possible partitions into k clusters among n elements
+#'
 #' @usage stirling(n)
+#'
 #' @param n a positive integer.
 #'
-#' @return Return a vector of integer, of which the `names` are the number `k` of clusters, and the `values` are the number of partitions into `k` clusters possibly combinated with `n` elements.
+#' @return Return a vector of integer,
+#'  of which the \code{names} are the number \code{k} of clusters,
+#'   and the \code{values} are the number of partitions
+#'   into \code{k} clusters possibly combinated with \code{n} elements.
+#'
 #' @details None.
 #'
-#' @examples
-#'  stirling(12)
-#'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 stirling <- function(n) {
 
@@ -566,18 +767,38 @@ stirling <- function(n) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Test posthoc of variance analysis
-#' @description Proceed to a variance analysis of the vector of data `x` associated with the vector of factors `clusters`, and return a `data.frame` containing the name of the groups `motif`, the group size `number`, the group mean `mean` and standard deviation `sd`, and the two-to-two differences expressed in the form of letters `group`.
-#' @usage test.posthoc(x, clusters, pvalue = 0.05)
+#'
+#' @description Proceed to a variance analysis of the vector of data
+#' \code{x} associated with the vector of factors \code{clusters},
+#' and return a \code{data.frame} containing the name of the groups
+#' \code{motif}, the group size \code{number}, the group mean
+#' \code{mean} and standard deviation \code{sd}, and the two-to-two
+#'  differences expressed in the form of letters \code{group}.
+#'
+#' @usage testPosthoc(x, clusters, pvalue = 0.05)
+#'
 #' @param x a numeric vector.
-#' @param clusters a vector of factors of same length as `x`.
+#'
+#' @param clusters a vector of factors of same length as \code{x}.
+#'
 #' @param pvalue a marginal p-value.
 #'
-#' @return Return a `data.frame` containing the name of the groups `motif`, the group size `number`, the group mean `mean` and standard deviation `sd`, and the two-to-two differences expressed in the form of letters `group`.
-#' @details Posthoc test uses Tukey method. Different groups are sorted by decreasing means. Letter rank increases with decreasing means.
+#' @return Return a \code{data.frame} containing
+#'  the name of the groups \code{motif},
+#'   the group size \code{number},
+#'  the group mean \code{mean} and standard deviation \code{sd},
+#'  and the two-to-two differences expressed
+#'  in the form of letters \code{group}.
+#'
+#' @details \code{testPosthoc} uses Tukey method.
+#' Different groups are sorted by decreasing means.
+#' Letter rank increases with decreasing means.
 #'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-test.posthoc <- function(x, clusters, pvalue = 0.05) {
+testPosthoc <- function(x, clusters, pvalue = 0.05) {
 
   # check the inputs
   if (sum(is.na(x)) > 0) {
@@ -630,21 +851,35 @@ test.posthoc <- function(x, clusters, pvalue = 0.05) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Confidence and prediction intervals for a linear model
-#' @description Compute the confidence and prediction intervals for a linear regression model `model`.
-#' @usage confidence.intervals(model, pvalue = 0.05,
+#'
+#' @description Compute the confidence and prediction intervals
+#' for a linear regression model \code{model}.
+#'
+#' @usage confidenceIntervals(model, pvalue = 0.05,
 #'                             xlim = range(model$model[ , 2]), x.length = 20)
-#' @param model a linear model obtained using `lm` function.
-#' @param pvalue a p-value. `pvalue = 0.05` by default.
-#' @param xlim a vector of two numeric values. `xlim = range(model$model[,2])` by default.
+#'
+#' @param model a linear model obtained using \code{lm} function.
+#'
+#' @param pvalue a p-value. \code{pvalue = 0.05} by default.
+#'
+#' @param xlim a vector of two numeric values.
+#' \code{xlim = range(model$model[,2])} by default.
+#'
 #' @param x.length an integer, indicating the number of points to compute.
 #'
-#' @return Return a `list` containing a vector `x` of x-values (ranging from `xlim[1]` to `xlim[2]`), the corresponding values `y.confidence` for confidence interval, the corresponding values `y.prediction` for prediction interval.
+#' @return Return a \code{list} containing a vector \code{x} of x-values
+#' (ranging from \code{xlim[1]} to \code{xlim[2]}), the corresponding values
+#'  \code{y.confidence} for confidence interval, the corresponding values
+#'   \code{y.prediction} for prediction interval.
 #'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
+#" @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-confidence.intervals <- function(model, pvalue = 0.05,
+confidenceIntervals <- function(model, pvalue = 0.05,
                                  xlim = range(model$model[ , 2]),
                                  x.length = 20) {
 
@@ -674,17 +909,27 @@ confidence.intervals <- function(model, pvalue = 0.05,
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Test for the dependence of two R2
+#'
 #' @description Tests for the dependence of two R2.
-#' @usage test.dependent.R2(v1, v2, v3, n = length(v1))
-#' @param v1,v2,v3 three numeric vectors of same length n, or three coefficients of determination. If inputs are three coefficients of determination, length of vector n must be specified.
-#' @param n the length of vectors. n must be specified if the inputs are three coefficients of determination.
+#'
+#' @usage testDependentR2(v1, v2, v3, n = length(v1))
+#'
+#' @param v1,v2,v3 three numeric vectors of same length n,
+#' or three coefficients of determination. If inputs are three coefficients
+#'  of determination, length of vector n must be specified.
+#'
+#' @param n the length of vectors. \code{n} must be specified
+#' if the inputs are three coefficients of determination.
 #'
 #' @return Return a p-value.
-#' @details None.
+#'
+#' @details Be careful, the three vectors are not symmetrical. The function compare R2 obtained by the models \code{v1 ~ v3} and \code{v2 ~ v3}.
 #'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-test.dependent.R2 <- function(v1, v2, v3, n = length(v1)) {
+testDependentR2 <- function(v1, v2, v3, n = length(v1)) {
 
   if ((length(v1) > 1) || (length(v2) > 1) || (length(v3) > 1))
   {
@@ -725,19 +970,24 @@ test.dependent.R2 <- function(v1, v2, v3, n = length(v1)) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Test for the dependence of two R2
+#'
 #' @description Tests for the dependence of two R2.
-#' @usage test.dependent.R2mse(prd2, prd1, obs)
-#' @param prd2,prd1 three numeric vectors of same length (opt = "x"), or three coefficients of determination if opt = "R2".
-#' @param obs an option for indicating if the inputs are vectors (opt = "x") or coefficients of determination (opt = "R2")
+#'
+#' @usage testDependentR2mse(prd2, prd1, obs)
+#'
+#' @param prd2,prd1,obs three numeric vectors of same length.
 #'
 #' @return Return a p-value.
-#' @details None.
+#'
+#' @details Be careful, the three vectors are not symmetrical.
+#' The function compare R2 obtained by the models \code{prd1 ~ obs}
+#' and \code{prd2 ~ obs}.
 #'
 #' @export
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-#  Compute the differences between successive R2 are significant
-
-test.dependent.R2mse <- function(prd2, prd1, obs) {
+testDependentR2mse <- function(prd2, prd1, obs) {
 
   R1 <- R2mse(prd2, obs)
   R2 <- R2mse(prd1, obs)
@@ -747,7 +997,7 @@ test.dependent.R2mse <- function(prd2, prd1, obs) {
   test2 <- (is.na(R1) || is.na(R2) || is.na(R3))
   test3 <- ( !((test1 || test2) == TRUE) )
 
-  return( ifelse(test3, test.dependent.R2(R1, R2, R3, length(obs)), NA) )
+  return( ifelse(test3, testDependentR2(R1, R2, R3, length(obs)), NA) )
 }
 
 
@@ -755,23 +1005,27 @@ test.dependent.R2mse <- function(prd2, prd1, obs) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Test for the dependence of two R2
-#' @description `pvalue.dependent.R2mse` tests for the dependence of two R2.
-#' @usage pvalue.dependent.R2mse(mprd, obs)
-#' @param mprd v2 v3 reg A linear model obtained using `lm` function.
-#' @param obs v2 v3 reg A linear model obtained using `lm` function.
 #'
-#' @return Return a `list` containing a vector `x` of x-values (ranging from `xlim[1]` to `xlim[2]`), the corresponding values `y.confidence` for confidence interval, the corresponding values `y.prediction` for prediction interval.
+#' @description \code{pvalueDependentR2mse} tests for
+#' the dependence of two R2.
 #'
-#' @details None.
+#' @usage pvalueDependentR2mse(mprd, obs)
+#'
+#' @param mprd a matrix of numeric vectors.
+#'
+#' @param obs the reference vector of length equals to \code{dim(mprd)[2]}.
+#'
+#' @return Return a vector of p-value of length equals
+#'  to \code{dim(mprd)[1]}.
+#'
+#' @details The function compare R2 obtained by the models
+#'  \code{mprd[i, ] ~ obs}.
 #'
 #' @export
-#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-#
-#  Compute the differences between successive R2 are significant
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-pvalue.dependent.R2mse <- function(mprd, obs) {
+pvalueDependentR2mse <- function(mprd, obs) {
 
   nbline <- dim(mprd)[1]
   res    <- numeric(nbline)
@@ -801,7 +1055,7 @@ pvalue.dependent.R2mse <- function(mprd, obs) {
 
     res[lin] <- NA
     if (!((test1 || test2) == TRUE))
-      res[lin] <- test.dependent.R2(R1, R2, R3, length(pobs))
+      res[lin] <- testDependentR2(R1, R2, R3, length(pobs))
   }
 
   return(res)

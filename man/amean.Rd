@@ -10,12 +10,13 @@ amean(x)
 \item{x}{a numeric vector.}
 }
 \value{
-Return the arithmetic mean of a vector, as standard 'mean' function.
+Return the arithmetic mean of a vector.
 }
 \description{
 Take a numeric vector and return the arithmetic mean.
 }
 \details{
-`amean` function does as the standard `stats::mean` function, but with option `na.rm = TRUE` by default.
+The function \code{amean} works as the standard function
+ \code{stats::mean}, but with option \code{na.rm = TRUE} by default.
 }
 \keyword{internal}

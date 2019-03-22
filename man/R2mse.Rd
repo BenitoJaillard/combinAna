@@ -9,14 +9,18 @@ R2mse(prd, obs)
 \arguments{
 \item{prd}{numeric vector of predicted values.}
 
-\item{obs}{numeric vector of reference values of same `length` as `prd`.}
+\item{obs}{numeric vector of reference values of \code{length(prd)}.}
 }
 \value{
 Return the Coefficient of Determination (R2).
 }
 \description{
-Take two numeric vectors and return their Coefficient of Determination (R2).
+Take two numeric vectors and return their Coefficient
+ of Determination (R2).
 }
 \details{
-Be careful, the `R2mse` function is not symmetrical. The first argument `prd` is vector of estimated, modelled or predicted values, the second argument `obs` is the vector of reference.
+Be careful, the function \code{R2mse} is not symmetrical.
+The first argument \code{prd} is vector of estimated, modelled or
+predicted values, the second argument \code{obs} is the vector
+of reference.
 }
