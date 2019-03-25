@@ -10,7 +10,16 @@ LazyData: true
 RoxygenNote: 6.1.1
 Imports:
     stats,
-    multcompView
+    graphics,
+    plyr,
+    multcompView,
+    clusterCrit,
+    partitions,
+    Cairo
 Collate: 
-    'local.Stats.R'
-    'local.Predicting.R'
+    'stats.int.R'
+    'clustering.int.R'
+    'predicting.int.R'
+    'clustering.ext.R'
+    'predicting.ext.R'
+    'separating.ext.R'
