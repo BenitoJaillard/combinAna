@@ -889,6 +889,8 @@ amean_byelt <- function(fctMot, mOccurMot) {
 #'   each assemblage is specified in the binary matrix \code{mOccur}:
 #'    \code{0} if the element does not occur, \code{1} if the element occurs.
 #'
+#' @name predict_amean_byelt
+#'
 #' @usage predict_amean_byelt(fct, assMotifs, mOccur)
 #'
 #' @param fct a vector of numeric values (assembly properties).

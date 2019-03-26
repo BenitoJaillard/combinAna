@@ -1046,7 +1046,6 @@ add_ass_names <- function(Fcal, Fprd, Fobs,
 #' @return gghhh
 #' @export
 #'
-#'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 plot_prediction <- function(res,
@@ -1068,7 +1067,7 @@ plot_prediction <- function(res,
 
                             ass.loc  = FALSE,
 
-                            opt.aov  = FALSE, pvalue = 0.025,
+                            opt.aov  = FALSE, pvalue = 0.05,
 
                             opt.all  = FALSE  )  {
 
