@@ -3,12 +3,21 @@
 combinAna
 =========
 
-The goal of combinAna is to ...
+The goal of combinAna is to provide functions for identifying the functional structure of interactive systems, then to record and plot all useful results. CombinAna is composed of only few functions, that can produce a large number of graphs managed by a set of options. The package is therefore easy to use.
 
 Installation
 ------------
 
 You can install the released version of combinAna from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("combinAna")
+```
+
+Scientific issue
+----------------
+
+We define a system as a collection of elements gathered in a finite space, which interact with each other. The elements are of any kind, and their interactions too. But the interactions between elements are at the origin of emergent functioning or properties specific to the system. The question is to relate the elemental composition of the system to its functioning or property. This relation will allow to predict the functioning or property of the system knowing its element composition.
 
 ``` r
 install.packages("combinAna")

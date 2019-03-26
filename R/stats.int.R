@@ -5,7 +5,8 @@
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-loadNamespace("stats")
+#loadNamespace("stats")
+#loadNamespace("multcompView")
 
 EPSILON <- 1e-15
 
@@ -63,7 +64,6 @@ amean <- function(x) {
 #'  but with option \code{na.rm = TRUE} by default.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -93,7 +93,6 @@ asd <- function(x) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -156,7 +155,7 @@ wasd <- function(x, w) {
 #'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -185,7 +184,7 @@ gmean <- function(x) {
 #'
 #' @details None.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -217,7 +216,6 @@ gsd <- function(x) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -251,7 +249,6 @@ wgmean <- function(x, w) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -288,7 +285,6 @@ wgsd <- function(x, w) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -309,6 +305,52 @@ mean_fct <- function(x, opt.mean = c("amean", "gmean")) {
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Return the Pearson' R2 of a linear regression
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+#' @title Return the Pearson' R2 of a linear regression
+#' @description ddd
+#' @usage cor2(x, y, na.rm = TRUE)
+#'
+#' @param x ff
+#' @param y fff
+#' @param na.rm ff
+#'
+#' @return ff
+#'
+#' @importFrom stats var cov
+#'
+#' @keywords internal
+#'
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+cor2 <- function(x, y, na.rm = TRUE) {
+
+  if (na.rm == TRUE) {
+    index <- !(is.na(x) | is.na(y))
+    x     <- x[index]
+    y     <- y[index]
+  }
+
+  res <- NA
+  if (length(x) > 0)
+  {
+    z1 <- stats::var(x)
+    z2 <- stats::var(y)
+    z3 <- stats::cov(x,y)
+
+    if ((z1 > 0) && (z2 > 0)) res <- (z3 ^ 2) / (z1 * z2)
+  }
+
+  return(res)
+}
+
+
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
 #' @title Residual Sum of Square (RSS) of two numeric vectors
 #'
@@ -324,7 +366,6 @@ mean_fct <- function(x, opt.mean = c("amean", "gmean")) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -352,7 +393,6 @@ rss <- function(x, y) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -383,7 +423,6 @@ mse <- function(x, y) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -414,7 +453,7 @@ rmse <- function(x, y) {
 #' predicted values, the second argument \code{obs} is the vector
 #' of reference.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -462,8 +501,9 @@ R2mse <- function(prd, obs) {
 #' or predicted values, the second argument \code{obs} is
 #' the vector of reference.
 #'
+#' @importFrom stats pf
+#'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -512,7 +552,7 @@ pmse <- function(prd, obs, nbK) {
 #'  Criterion (AIC) computed from the Residuals Sum of Square and
 #'  the number of used parameters.
 #'
-#' @usage .AIC(x, y, nbK)
+#' @usage AIC(x, y, nbK)
 #'
 #' @param x,y numeric vectors of same length.
 #'
@@ -524,11 +564,10 @@ pmse <- function(prd, obs, nbK) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-.AIC <- function(x, y, nbK) {
+AIC <- function(x, y, nbK) {
 
   n   <- length(y)
   RSS <- rss(x, y)
@@ -555,7 +594,7 @@ pmse <- function(prd, obs, nbK) {
 #'  Criterion (AICc) computed from the Residuals Sum of Square and
 #'   the number of used parameters, and corrected for .
 #'
-#' @usage .AICc(x, y, nbK)
+#' @usage AICc(x, y, nbK)
 #'
 #' @param x,y numeric vectors of same length.
 #'
@@ -568,11 +607,10 @@ pmse <- function(prd, obs, nbK) {
 #'  the second argument is the vector of reference.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-.AICc <- function(x, y, nbK) {
+AICc <- function(x, y, nbK) {
 
   n   <- length(y)
   RSS <- rss(x, y)
@@ -608,7 +646,6 @@ pmse <- function(prd, obs, nbK) {
 #' function \code{which.min}.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -628,20 +665,20 @@ argmin <- function(x) {
 #' @description Take a numeric vector and return the index of the first
 #' (the lowest index) minimum values.
 #'
-#' @usage firstArgmin(x)
+#' @usage first_argmin(x)
 #'
 #' @param x a numeric vector.
 #'
 #' @return Return the index of the first (the lowest index) minimum values of a vector.
 #'
-#' @details The function \code{firstArgmin} works as the
+#' @details The function \code{first_argmin} works as the
 #' standard function \code{min(which.min)}.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-firstArgmin <- function(x) {
+first_argmin <- function(x) {
 
   x <- x[!is.na(x)]
 
@@ -670,7 +707,6 @@ firstArgmin <- function(x) {
 #'  \code{which.max}.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -690,21 +726,21 @@ argmax <- function(x) {
 #' @description Take a numeric vector and return the index of
 #' the first (the lowest index) maximum values.
 #'
-#' @usage firstArgmax(x)
+#' @usage first_argmax(x)
 #'
 #' @param x a numeric vector.
 #'
 #' @return Return the index of the first (the lowest index)
 #'  maximum values of a vector.
 #'
-#' @details The function \code{firstArgmax} works as the
+#' @details The function \code{first_argmax} works as the
 #' standard function \code{min(which.max)}.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-firstArgmax <- function(x) {
+first_argmax <- function(x) {
 
   x <- x[!is.na(x)]
 
@@ -744,7 +780,6 @@ firstArgmax <- function(x) {
 #' @details None.
 #'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
@@ -775,7 +810,7 @@ stirling <- function(n) {
 #' \code{mean} and standard deviation \code{sd}, and the two-to-two
 #'  differences expressed in the form of letters \code{group}.
 #'
-#' @usage testPosthoc(x, clusters, pvalue = 0.05)
+#' @usage test_posthoc(x, clusters, pvalue = 0.05)
 #'
 #' @param x a numeric vector.
 #'
@@ -790,15 +825,18 @@ stirling <- function(n) {
 #'  and the two-to-two differences expressed
 #'  in the form of letters \code{group}.
 #'
-#' @details \code{testPosthoc} uses Tukey method.
+#' @details \code{test_posthoc} uses Tukey method.
 #' Different groups are sorted by decreasing means.
 #' Letter rank increases with decreasing means.
 #'
-#' @export
+#' @importFrom stats aov TukeyHSD
+#' @importFrom multcompView multcompLetters4
+
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-testPosthoc <- function(x, clusters, pvalue = 0.05) {
+test_posthoc <- function(x, clusters, pvalue = 0.05) {
 
   # check the inputs
   if (sum(is.na(x)) > 0) {
@@ -855,7 +893,7 @@ testPosthoc <- function(x, clusters, pvalue = 0.05) {
 #' @description Compute the confidence and prediction intervals
 #' for a linear regression model \code{model}.
 #'
-#' @usage confidenceIntervals(model, pvalue = 0.05,
+#' @usage confidence_intervals(model, pvalue = 0.05,
 #'                             xlim = range(model$model[ , 2]), x.length = 20)
 #'
 #' @param model a linear model obtained using \code{lm} function.
@@ -874,12 +912,13 @@ testPosthoc <- function(x, clusters, pvalue = 0.05) {
 #'
 #' @details None.
 #'
+#' @importFrom stats qt
+#'
 #' @keywords internal
-#" @export
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-confidenceIntervals <- function(model, pvalue = 0.05,
+confidence_intervals <- function(model, pvalue = 0.05,
                                  xlim = range(model$model[ , 2]),
                                  x.length = 20) {
 
@@ -912,7 +951,7 @@ confidenceIntervals <- function(model, pvalue = 0.05,
 #'
 #' @description Tests for the dependence of two R2.
 #'
-#' @usage testDependentR2(v1, v2, v3, n = length(v1))
+#' @usage test_dependent_R2(v1, v2, v3, n = length(v1))
 #'
 #' @param v1,v2,v3 three numeric vectors of same length n,
 #' or three coefficients of determination. If inputs are three coefficients
@@ -923,13 +962,17 @@ confidenceIntervals <- function(model, pvalue = 0.05,
 #'
 #' @return Return a p-value.
 #'
-#' @details Be careful, the three vectors are not symmetrical. The function compare R2 obtained by the models \code{v1 ~ v3} and \code{v2 ~ v3}.
+#' @details Be careful, the three vectors are not symmetrical.
+#' The function compare R2 obtained by the models \code{v1 ~ v3} and
+#'  \code{v2 ~ v3}.
 #'
-#' @export
+#' @importFrom stats cor pt
+#'
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-testDependentR2 <- function(v1, v2, v3, n = length(v1)) {
+test_dependent_R2 <- function(v1, v2, v3, n = length(v1)) {
 
   if ((length(v1) > 1) || (length(v2) > 1) || (length(v3) > 1))
   {
@@ -973,7 +1016,7 @@ testDependentR2 <- function(v1, v2, v3, n = length(v1)) {
 #'
 #' @description Tests for the dependence of two R2.
 #'
-#' @usage testDependentR2mse(prd2, prd1, obs)
+#' @usage test_dependent_R2mse(prd2, prd1, obs)
 #'
 #' @param prd2,prd1,obs three numeric vectors of same length.
 #'
@@ -983,11 +1026,11 @@ testDependentR2 <- function(v1, v2, v3, n = length(v1)) {
 #' The function compare R2 obtained by the models \code{prd1 ~ obs}
 #' and \code{prd2 ~ obs}.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-testDependentR2mse <- function(prd2, prd1, obs) {
+test_dependent_R2mse <- function(prd2, prd1, obs) {
 
   R1 <- R2mse(prd2, obs)
   R2 <- R2mse(prd1, obs)
@@ -997,7 +1040,7 @@ testDependentR2mse <- function(prd2, prd1, obs) {
   test2 <- (is.na(R1) || is.na(R2) || is.na(R3))
   test3 <- ( !((test1 || test2) == TRUE) )
 
-  return( ifelse(test3, testDependentR2(R1, R2, R3, length(obs)), NA) )
+  return( ifelse(test3, test_dependent_R2(R1, R2, R3, length(obs)), NA) )
 }
 
 
@@ -1006,10 +1049,10 @@ testDependentR2mse <- function(prd2, prd1, obs) {
 #'
 #' @title Test for the dependence of two R2
 #'
-#' @description \code{pvalueDependentR2mse} tests for
+#' @description \code{pvalue_dependent_R2mse} tests for
 #' the dependence of two R2.
 #'
-#' @usage pvalueDependentR2mse(mprd, obs)
+#' @usage pvalue_dependent_R2mse(mprd, obs)
 #'
 #' @param mprd a matrix of numeric vectors.
 #'
@@ -1021,11 +1064,11 @@ testDependentR2mse <- function(prd2, prd1, obs) {
 #' @details The function compare R2 obtained by the models
 #'  \code{mprd[i, ] ~ obs}.
 #'
-#' @export
+#' @keywords internal
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-pvalueDependentR2mse <- function(mprd, obs) {
+pvalue_dependent_R2mse <- function(mprd, obs) {
 
   nbline <- dim(mprd)[1]
   res    <- numeric(nbline)
@@ -1055,7 +1098,7 @@ pvalueDependentR2mse <- function(mprd, obs) {
 
     res[lin] <- NA
     if (!((test1 || test2) == TRUE))
-      res[lin] <- testDependentR2(R1, R2, R3, length(pobs))
+      res[lin] <- test_dependent_R2(R1, R2, R3, length(pobs))
   }
 
   return(res)
@@ -1063,6 +1106,11 @@ pvalueDependentR2mse <- function(mprd, obs) {
 
 
 
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  END OF FILE
+#
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 

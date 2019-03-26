@@ -4,8 +4,17 @@
 #
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+figures  <- c(21, 22, 24, 23, 25)
+# 21 = "circle", 22 = "square", 23 = "diamond",
+# 24 = triangle point-up", 25 = "triangle point-down"
 
-#' @include local.Stats.R
+couleurs <- c("red3", "blue2", "orange2", "turquoise3", "magenta", "green4",
+              "pink", "violet", "salmon4", "skyblue2", "sienna3", "olivedrab3")
+
+myLetters <- c(letters, LETTERS)
+
+
+#' @include stats.int.R
 NULL
 
 
@@ -17,14 +26,14 @@ NULL
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #'
-#' @title Arithmetic mean (amean) by motif (bymot)
+#' @title Arithmetic mean (amean) by assembly motif (bymot)
 #'
 #' @description Take the numeric vector \code{fct} and return a vector of same
 #'  length, of which values are computed as the arithmetic mean of all vector
 #'   elements belonging to a same motif. The motif of each vector element is
 #'    specified in the vector \code{assMotifs}.
 #'
-#' @usage predictAmeanBymot(fct, assMotifs)
+#' @usage predict_amean_bymot(fct, assMotifs)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -44,7 +53,7 @@ NULL
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymot <- function(fct, assMotifs) {
+predict_amean_bymot <- function(fct, assMotifs) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -71,7 +80,7 @@ predictAmeanBymot <- function(fct, assMotifs) {
 #'  each vector element is specified in the vector \code{assMotifs}. The
 #'   experiment of each vector element is specified in the vector \code{xpr}.
 #'
-#' @usage predictAmeanBymotXpr(fct, assMotifs, xpr)
+#' @usage predict_amean_bymot_xpr(fct, assMotifs, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -94,7 +103,7 @@ predictAmeanBymot <- function(fct, assMotifs) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymotXpr <- function(fct, assMotifs, xpr) {
+predict_amean_bymot_xpr <- function(fct, assMotifs, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -102,7 +111,7 @@ predictAmeanBymotXpr <- function(fct, assMotifs, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictAmeanBymot(fct[indXpr], assMotifs[indXpr])
+    fctPrd[indXpr] <- predict_amean_bymot(fct[indXpr], assMotifs[indXpr])
   }
 
   return(fctPrd)
@@ -118,7 +127,7 @@ predictAmeanBymotXpr <- function(fct, assMotifs, xpr) {
 #' same length, of which values are computed as the arithmetic mean of all
 #' vector elements.
 #'
-#' @usage ameanBymotLOO(fctMot)
+#' @usage amean_bymot_LOO(fctMot)
 #'
 #' @param fctMot a vector of numeric values of elements belonging to a same
 #'  motif.
@@ -135,7 +144,7 @@ predictAmeanBymotXpr <- function(fct, assMotifs, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-ameanBymotLOO <- function(fctMot) {
+amean_bymot_LOO <- function(fctMot) {
 
   nbass <- length(fctMot)
 
@@ -158,7 +167,7 @@ ameanBymotLOO <- function(fctMot) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictAmeanBymotLOO(fct, assMotifs)
+#' @usage predict_amean_bymot_LOO(fct, assMotifs)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -177,7 +186,7 @@ ameanBymotLOO <- function(fctMot) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymotLOO <- function(fct, assMotifs) {
+predict_amean_bymot_LOO <- function(fct, assMotifs) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -185,7 +194,7 @@ predictAmeanBymotLOO <- function(fct, assMotifs) {
   for (mot in seq_along(setMot)) {
 
     indMot         <- which(assMotifs == setMot[mot])
-    fctPrd[indMot] <- ameanBymotLOO(fct[indMot])
+    fctPrd[indMot] <- amean_bymot_LOO(fct[indMot])
   }
 
   return(fctPrd)
@@ -201,7 +210,7 @@ predictAmeanBymotLOO <- function(fct, assMotifs) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictAmeanBymotLOOXpr(fct, assMotifs, xpr)
+#' @usage predict_amean_bymot_LOO_xpr(fct, assMotifs, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -224,7 +233,7 @@ predictAmeanBymotLOO <- function(fct, assMotifs) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
+predict_amean_bymot_LOO_xpr <- function(fct, assMotifs, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -232,7 +241,7 @@ predictAmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictAmeanBymotLOO(fct[indXpr], assMotifs[indXpr])
+    fctPrd[indXpr] <- predict_amean_bymot_LOO(fct[indXpr], assMotifs[indXpr])
   }
 
   return(fctPrd)
@@ -248,7 +257,7 @@ predictAmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage ameanBymotJack(fctMot, jack)
+#' @usage amean_bymot_jack(fctMot, jack)
 #'
 #' @param fctMot a vector of numeric values of elements belonging to a
 #'  same motif.
@@ -273,7 +282,7 @@ predictAmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-ameanBymotJack <- function(fctMot, jack) {
+amean_bymot_jack <- function(fctMot, jack) {
 
   nbass <- length(fctMot)
 
@@ -293,7 +302,7 @@ ameanBymotJack <- function(fctMot, jack) {
 
   } else {
 
-    fctPrd <- ameanBymotLOO(fctMot)
+    fctPrd <- amean_bymot_LOO(fctMot)
   }
 
   return(fctPrd)
@@ -308,7 +317,7 @@ ameanBymotJack <- function(fctMot, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage predictAmeanBymotJack(fct, assMotifs, jack)
+#' @usage predict_amean_bymot_jack(fct, assMotifs, jack)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -335,7 +344,7 @@ ameanBymotJack <- function(fctMot, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymotJack <- function(fct, assMotifs, jack) {
+predict_amean_bymot_jack <- function(fct, assMotifs, jack) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -343,7 +352,7 @@ predictAmeanBymotJack <- function(fct, assMotifs, jack) {
   for (mot in seq_along(setMot)) {
 
     indMot         <- which(assMotifs == setMot[mot])
-    fctPrd[indMot] <- ameanBymotJack(fct[indMot], jack)
+    fctPrd[indMot] <- amean_bymot_jack(fct[indMot], jack)
   }
 
   return(fctPrd)
@@ -359,7 +368,7 @@ predictAmeanBymotJack <- function(fct, assMotifs, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictAmeanBymotJackXpr(fct, assMotifs, jack, xpr)
+#' @usage predict_amean_bymot_jack_xpr(fct, assMotifs, jack, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -389,7 +398,7 @@ predictAmeanBymotJack <- function(fct, assMotifs, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
+predict_amean_bymot_jack_xpr <- function(fct, assMotifs, jack, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -397,8 +406,8 @@ predictAmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictAmeanBymotJack(fct[indXpr],
-                                            assMotifs[indXpr], jack)
+    fctPrd[indXpr] <- predict_amean_bymot_jack(fct[indXpr],
+                                               assMotifs[indXpr], jack)
   }
 
   return(fctPrd)
@@ -420,7 +429,7 @@ predictAmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
 #' of all vector elements belonging to a same motif. The motif of each
 #' vector element is specified in the vector \code{assMotifs}.
 #'
-#' @usage predictGmeanBymot(fct, assMotifs)
+#' @usage predict_gmean_bymot(fct, assMotifs)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -440,7 +449,7 @@ predictAmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymot <- function(fct, assMotifs) {
+predict_gmean_bymot <- function(fct, assMotifs) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -467,7 +476,7 @@ predictGmeanBymot <- function(fct, assMotifs) {
 #'   \code{assMotifs}. The experiment of each vector element is
 #'    specified in the vector \code{xpr}.
 #'
-#' @usage predictGmeanBymotXpr(fct, assMotifs, xpr)
+#' @usage predict_gmean_bymot_xpr(fct, assMotifs, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -490,7 +499,7 @@ predictGmeanBymot <- function(fct, assMotifs) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymotXpr <- function(fct, assMotifs, xpr) {
+predict_gmean_bymot_xpr <- function(fct, assMotifs, xpr) {
 
   fctPrd    <- numeric(length(assMotifs))
 
@@ -498,7 +507,7 @@ predictGmeanBymotXpr <- function(fct, assMotifs, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictGmeanBymot(fct[indXpr], assMotifs[indXpr])
+    fctPrd[indXpr] <- predict_gmean_bymot(fct[indXpr], assMotifs[indXpr])
   }
 
   return(fctPrd)
@@ -514,7 +523,7 @@ predictGmeanBymotXpr <- function(fct, assMotifs, xpr) {
 #'  of same length, of which values are computed as the geometric mean
 #'  of all vector elements.
 #'
-#' @usage gmeanBymotLOO(fctMot)
+#' @usage gmean_bymot_LOO(fctMot)
 #'
 #' @param fctMot a vector of numeric values of elements belonging
 #'  to a same motif.
@@ -531,7 +540,7 @@ predictGmeanBymotXpr <- function(fct, assMotifs, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-gmeanBymotLOO <- function(fctMot) {
+gmean_bymot_LOO <- function(fctMot) {
 
   nbass <- length(fctMot)
 
@@ -554,7 +563,7 @@ gmeanBymotLOO <- function(fctMot) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the geometric mean of all elements belonging to a same motif.
 #'
-#' @usage predictGmeanBymotLOO(fct, assMotifs)
+#' @usage predict_gmean_bymot_LOO(fct, assMotifs)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -572,7 +581,7 @@ gmeanBymotLOO <- function(fctMot) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymotLOO <- function(fct, assMotifs) {
+predict_gmean_bymot_LOO <- function(fct, assMotifs) {
 
   fctPrd    <- numeric(length(assMotifs))
 
@@ -580,7 +589,7 @@ predictGmeanBymotLOO <- function(fct, assMotifs) {
   for (mot in seq_along(setMot)) {
 
     indMot         <- which(assMotifs == setMot[mot])
-    fctPrd[indMot] <- gmeanBymotLOO(fct[indMot])
+    fctPrd[indMot] <- gmean_bymot_LOO(fct[indMot])
   }
 
   return(fctPrd)
@@ -596,7 +605,7 @@ predictGmeanBymotLOO <- function(fct, assMotifs) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the gGeometric mean of all elements belonging to a same motif.
 #'
-#' @usage predictGmeanBymotLOOXpr(fct, assMotifs, xpr)
+#' @usage predict_gmean_bymot_LOO_xpr(fct, assMotifs, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -619,7 +628,7 @@ predictGmeanBymotLOO <- function(fct, assMotifs) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
+predict_gmean_bymot_LOO_xpr <- function(fct, assMotifs, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -627,7 +636,7 @@ predictGmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictGmeanBymotLOO(fct[indXpr], assMotifs[indXpr])
+    fctPrd[indXpr] <- predict_gmean_bymot_LOO(fct[indXpr], assMotifs[indXpr])
   }
 
   return(fctPrd)
@@ -643,7 +652,7 @@ predictGmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the geometric mean of all elements belonging to the same motif.
 #'
-#' @usage gmeanBymotJack(fctMot, jack)
+#' @usage gmean_bymot_jack(fctMot, jack)
 #'
 #' @param fctMot a vector of numeric values of elements belonging
 #' to a same motif.
@@ -668,7 +677,7 @@ predictGmeanBymotLOOXpr <- function(fct, assMotifs, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-gmeanBymotJack <- function(fctMot, jack) {
+gmean_bymot_jack <- function(fctMot, jack) {
 
   nbass <- length(fctMot)
 
@@ -688,7 +697,7 @@ gmeanBymotJack <- function(fctMot, jack) {
 
   } else {
 
-    fctPrd <- gmeanBymotLOO(fctMot)
+    fctPrd <- gmean_bymot_LOO(fctMot)
   }
 
   return(fctPrd)
@@ -703,7 +712,7 @@ gmeanBymotJack <- function(fctMot, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the geometric mean of all elements belonging to the same motif.
 #'
-#' @usage predictGmeanBymotJack(fct, assMotifs, jack)
+#' @usage predict_gmean_bymot_jack(fct, assMotifs, jack)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -730,7 +739,7 @@ gmeanBymotJack <- function(fctMot, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymotJack <- function(fct, assMotifs, jack) {
+predict_gmean_bymot_jack <- function(fct, assMotifs, jack) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -738,7 +747,7 @@ predictGmeanBymotJack <- function(fct, assMotifs, jack) {
   for (mot in seq_along(setMot)) {
 
     indMot         <- which(assMotifs == setMot[mot])
-    fctPrd[indMot] <- gmeanBymotJack(fct[indMot], jack)
+    fctPrd[indMot] <- gmean_bymot_jack(fct[indMot], jack)
   }
 
   return(fctPrd)
@@ -754,7 +763,7 @@ predictGmeanBymotJack <- function(fct, assMotifs, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the geometric mean of all elements belonging to a same motif.
 #'
-#' @usage predictAmeanBymotJackXpr(fct, assMotifs, jack, xpr)
+#' @usage predict_amean_bymot_jack_xpr(fct, assMotifs, jack, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -785,7 +794,7 @@ predictGmeanBymotJack <- function(fct, assMotifs, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
+predict_gmean_bymot_jack_xpr <- function(fct, assMotifs, jack, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -793,7 +802,7 @@ predictGmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictGmeanBymotJack(assMotifs[indXpr],
+    fctPrd[indXpr] <- predict_gmean_bymot_jack(assMotifs[indXpr],
                                                fct[indXpr], jack)
   }
 
@@ -824,7 +833,7 @@ predictGmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
 #'    \code{mOccurMot}: \code{0} if the element does not occur,
 #'    \code{1} if the element occurs.
 #'
-#' @usage ameanByelt(fctMot, mOccurMot)
+#' @usage amean_byelt(fctMot, mOccurMot)
 #'
 #' @param fctMot a vector of numeric values (assembly properties).
 #'
@@ -844,7 +853,7 @@ predictGmeanBymotJackXpr <- function(fct, assMotifs, jack, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-ameanByelt <- function(fctMot, mOccurMot) {
+amean_byelt <- function(fctMot, mOccurMot) {
 
   fctPrd <- numeric(length(fctMot))
 
@@ -880,7 +889,7 @@ ameanByelt <- function(fctMot, mOccurMot) {
 #'   each assemblage is specified in the binary matrix \code{mOccur}:
 #'    \code{0} if the element does not occur, \code{1} if the element occurs.
 #'
-#' @usage predictAmeanByelt(fct, assMotifs, mOccur)
+#' @usage predict_amean_byelt(fct, assMotifs, mOccur)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -900,11 +909,12 @@ ameanByelt <- function(fctMot, mOccurMot) {
 #'   assemblages of a same motif, by including all assemblages belonging
 #'    to a same motif, even the one to predict.
 #'
-#' @keywords internal
+# @keywords internal
+#' @export
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByelt <- function(fct, assMotifs, mOccur) {
+predict_amean_byelt <- function(fct, assMotifs, mOccur) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -914,7 +924,7 @@ predictAmeanByelt <- function(fct, assMotifs, mOccur) {
     indMot <- which(assMotifs == setMot[mot])
 
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- ameanByelt(fct[indMot], mOccur[indMot, ])
+      fctPrd[indMot] <- amean_byelt(fct[indMot], mOccur[indMot, ])
     } else {
       fctPrd[indMot] <- fct[indMot]
     }
@@ -942,7 +952,7 @@ predictAmeanByelt <- function(fct, assMotifs, mOccur) {
 #'     is specified in the binary matrix \code{mOccur}: \code{0}
 #'      if the element does not occur, \code{1} if the element occurs.
 #'
-#' @usage predictAmeanByeltXpr(fct, assMotifs, mOccur, xpr)
+#' @usage predict_amean_byelt_xpr(fct, assMotifs, mOccur, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -969,7 +979,7 @@ predictAmeanByelt <- function(fct, assMotifs, mOccur) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
+predict_amean_byelt_xpr <- function(fct, assMotifs, mOccur, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -977,7 +987,7 @@ predictAmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictAmeanByelt(fct[indXpr],
+    fctPrd[indXpr] <- predict_amean_byelt(fct[indXpr],
                                           assMotifs[indXpr],
                                           mOccur[indXpr, ])
   }
@@ -1003,7 +1013,7 @@ predictAmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'      binary matrix \code{mOccurMot}: \code{0} if the element does not
 #'       occur, \code{1} if the element occurs.
 #'
-#' @usage ameanByeltLOO(fctMot, mOccurMot)
+#' @usage amean_byelt_LOO(fctMot, mOccurMot)
 #'
 #' @param fctMot a vector of numeric values (assembly properties).
 #'
@@ -1025,7 +1035,7 @@ predictAmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-ameanByeltLOO <- function(fctMot, mOccurMot) {
+amean_byelt_LOO <- function(fctMot, mOccurMot) {
 
   nbass  <- length(fctMot)
   fctPrd <- numeric(nbass)
@@ -1076,7 +1086,7 @@ ameanByeltLOO <- function(fctMot, mOccurMot) {
 #'     \code{mOccur}: \code{0} if the element does not occur, \code{1}
 #'      if the element occurs.
 #'
-#' @usage predictAmeanByeltLOO(fct, assMotifs, mOccur)
+#' @usage predict_amean_byelt_LOO(fct, assMotifs, mOccur)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1098,7 +1108,7 @@ ameanByeltLOO <- function(fctMot, mOccurMot) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByeltLOO <- function(fct, assMotifs, mOccur) {
+predict_amean_byelt_LOO <- function(fct, assMotifs, mOccur) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1106,7 +1116,7 @@ predictAmeanByeltLOO <- function(fct, assMotifs, mOccur) {
   for (mot in seq_along(setMot)) {
     indMot <- which(assMotifs == setMot[mot])
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- ameanByeltLOO(fct[indMot], mOccur[indMot, ])
+      fctPrd[indMot] <- amean_byelt_LOO(fct[indMot], mOccur[indMot, ])
     } else {
       fctPrd[indMot] <- NA
     }
@@ -1136,7 +1146,7 @@ predictAmeanByeltLOO <- function(fct, assMotifs, mOccur) {
 #'    binary matrix \code{mOccur}: \code{0} if the element does not occur,
 #'     \code{1} if the element occurs.
 #'
-#' @usage predictAmeanByeltLOOXpr(fct, assMotifs, mOccur, xpr)
+#' @usage predict_amean_byelt_LOO_xpr(fct, assMotifs, mOccur, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1162,7 +1172,7 @@ predictAmeanByeltLOO <- function(fct, assMotifs, mOccur) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
+predict_amean_byelt_LOO_xpr <- function(fct, assMotifs, mOccur, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1170,7 +1180,7 @@ predictAmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
   for (ix in seq_along(setXpr)) {
 
     indXpr         <- which(xpr == setXpr[ix])
-    fctPrd[indXpr] <- predictAmeanByeltLOO(fct[indXpr],
+    fctPrd[indXpr] <- predict_amean_byelt_LOO(fct[indXpr],
                                               assMotifs[indXpr],
                                               mOccur[indXpr, ] )
   }
@@ -1188,7 +1198,7 @@ predictAmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage ameanByeltJack(fctMot, mOccurMot, jack)
+#' @usage amean_byelt_jack(fctMot, mOccurMot, jack)
 #'
 #' @param fctMot a vector of numeric values of elements belonging to
 #' a same motif.
@@ -1217,7 +1227,7 @@ predictAmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-ameanByeltJack <- function(fctMot, mOccurMot, jack) {
+amean_byelt_jack <- function(fctMot, mOccurMot, jack) {
 
   nbass  <- length(fctMot)
   fctPrd <- numeric(nbass)
@@ -1254,7 +1264,7 @@ ameanByeltJack <- function(fctMot, mOccurMot, jack) {
 
   } else {
 
-    fctPrd[ ] <- ameanByeltLOO(fctMot, mOccurMot)
+    fctPrd[ ] <- amean_byelt_LOO(fctMot, mOccurMot)
   }
 
   return(fctPrd)
@@ -1269,7 +1279,7 @@ ameanByeltJack <- function(fctMot, mOccurMot, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage predictAmeanByeltJack(fct, assMotifs, mOccur, jack)
+#' @usage predict_amean_byelt_jack(fct, assMotifs, mOccur, jack)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1299,7 +1309,7 @@ ameanByeltJack <- function(fctMot, mOccurMot, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
+predict_amean_byelt_jack <- function(fct, assMotifs, mOccur, jack) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1308,7 +1318,7 @@ predictAmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 
     indMot <- which(assMotifs == setMot[mot])
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- ameanByeltJack(fct[indMot], mOccur[indMot, ], jack)
+      fctPrd[indMot] <- amean_byelt_jack(fct[indMot], mOccur[indMot, ], jack)
     } else {
       fctPrd[indMot] <- NA
     }
@@ -1327,7 +1337,7 @@ predictAmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictAmeanByeltJackXpr(fct, assMotifs, mOccur, jack, xpr)
+#' @usage predict_amean_byelt_jack_xpr(fct, assMotifs, mOccur, jack, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1355,12 +1365,11 @@ predictAmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 #'      the motif is lower than \code{jack[1]*jack[2]}, prediction is
 #'       computed by Leave-One-Out (LOO).
 #'
-#" @keywords internal
-#' @export
+#' @keywords internal
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictAmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
+predict_amean_byelt_jack_xpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1368,7 +1377,7 @@ predictAmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
   for (ix in seq_along(setXpr)) {
 
     index         <- which(xpr == setXpr[ix])
-    fctPrd[index] <- predictAmeanByeltJack(fct[index],
+    fctPrd[index] <- predict_amean_byelt_jack(fct[index],
                                               assMotifs[index],
                                               mOccur[index, ],
                                               jack  )
@@ -1400,7 +1409,7 @@ predictAmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 #'      is specified in the binary matrix \code{mOccurMot}: \code{0}
 #'       if the element does not occur, \code{1} if the element occurs.
 #'
-#' @usage gmeanByelt(fctMot, mOccurMot)
+#' @usage gmean_byelt(fctMot, mOccurMot)
 #'
 #' @param fctMot a vector of numeric values (assembly properties).
 #'
@@ -1420,7 +1429,7 @@ predictAmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-gmeanByelt <- function(fctMot, mOccurMot) {
+gmean_byelt <- function(fctMot, mOccurMot) {
 
   fctPrd    <- numeric(length(fctMot))
   fctPrd[ ] <- 1
@@ -1457,7 +1466,7 @@ gmeanByelt <- function(fctMot, mOccurMot) {
 #'     binary matrix \code{mOccur}: \code{0} if the element does not occur,
 #'      \code{1} if the element occurs.
 #'
-#' @usage predictGmeanByelt(fct, assMotifs, mOccur)
+#' @usage predict_gmean_byelt(fct, assMotifs, mOccur)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1480,7 +1489,7 @@ gmeanByelt <- function(fctMot, mOccurMot) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByelt <- function(fct, assMotifs, mOccur) {
+predict_gmean_byelt <- function(fct, assMotifs, mOccur) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1489,7 +1498,7 @@ predictGmeanByelt <- function(fct, assMotifs, mOccur) {
 
     indMot <- which(assMotifs == setMot[mot])
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- gmeanByelt(fct[indMot], mOccur[indMot, ])
+      fctPrd[indMot] <- gmean_byelt(fct[indMot], mOccur[indMot, ])
     } else {
       fctPrd[indMot] <- fct[indMot]
     }
@@ -1517,7 +1526,7 @@ predictGmeanByelt <- function(fct, assMotifs, mOccur) {
 #'      is specified in the binary matrix \code{mOccur}: \code{0} if
 #'      the element does not occur, \code{1} if the element occurs.
 #'
-#' @usage predictGmeanByeltXpr(fct, assMotifs, mOccur, xpr)
+#' @usage predict_gmean_byelt_xpr(fct, assMotifs, mOccur, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1542,7 +1551,7 @@ predictGmeanByelt <- function(fct, assMotifs, mOccur) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
+predict_gmean_byelt_xpr <- function(fct, assMotifs, mOccur, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1550,9 +1559,9 @@ predictGmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
   for (ix in seq_along(setXpr)) {
 
     index         <- which(xpr == setXpr[ix])
-    fctPrd[index] <- predictGmeanByelt( fct[index],
-                                        assMotifs[index],
-                                         mOccur[index, ] )
+    fctPrd[index] <- predict_gmean_byelt( fct[index],
+                                          assMotifs[index],
+                                          mOccur[index, ] )
   }
 
   return(fctPrd)
@@ -1576,7 +1585,7 @@ predictGmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'     binary matrix \code{mOccurMot}: \code{0} if the element does not
 #'      occur, \code{1} if the element occurs.
 #'
-#' @usage gmeanByeltLOO(fctMot, mOccurMot)
+#' @usage gmean_byelt_LOO(fctMot, mOccurMot)
 #'
 #' @param fctMot a vector of numeric values (assembly properties).
 #'
@@ -1598,7 +1607,7 @@ predictGmeanByeltXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-gmeanByeltLOO <- function(fctMot, mOccurMot) {
+gmean_byelt_LOO <- function(fctMot, mOccurMot) {
 
   nbass  <- length(fctMot)
   fctPrd <- numeric(nbass)
@@ -1642,7 +1651,7 @@ gmeanByeltLOO <- function(fctMot, mOccurMot) {
 #'      binary matrix \code{mOccur}: \code{0} if the element does not occur,
 #'       \code{1} if the element occurs.
 #'
-#' @usage predictGmeanByeltLOO(fct, assMotifs, mOccur)
+#' @usage predict_gmean_byelt_LOO(fct, assMotifs, mOccur)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1664,7 +1673,7 @@ gmeanByeltLOO <- function(fctMot, mOccurMot) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByeltLOO <- function(fct, assMotifs, mOccur) {
+predict_gmean_byelt_LOO <- function(fct, assMotifs, mOccur) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1673,7 +1682,7 @@ predictGmeanByeltLOO <- function(fct, assMotifs, mOccur) {
 
     indMot <- which(assMotifs == setMot[mot])
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- gmeanByeltLOO(fct[indMot], mOccur[indMot, ])
+      fctPrd[indMot] <- gmean_byelt_LOO(fct[indMot], mOccur[indMot, ])
     } else {
       fctPrd[indMot] <- NA
     }
@@ -1703,7 +1712,7 @@ predictGmeanByeltLOO <- function(fct, assMotifs, mOccur) {
 #'       binary matrix \code{mOccur}: \code{0} if the element does not
 #'        occur, \code{1} if the element occurs.
 #'
-#' @usage predictGmeanByeltLOOXpr(fct, assMotifs, mOccur, xpr)
+#' @usage predict_gmean_byelt_LOO_xpr(fct, assMotifs, mOccur, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1728,7 +1737,7 @@ predictGmeanByeltLOO <- function(fct, assMotifs, mOccur) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
+predict_gmean_byelt_LOO_xpr <- function(fct, assMotifs, mOccur, xpr) {
 
   fctPrd    <- numeric(length(assMotifs))
 
@@ -1736,9 +1745,9 @@ predictGmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
   for (ix in seq_along(setXpr)) {
 
     index         <- which(xpr == setXpr[ix])
-    fctPrd[index] <- predictGmeanByeltLOO(fct[index],
-                                          assMotifs[index],
-                                          mOccur[index, ] )
+    fctPrd[index] <- predict_gmean_byelt_LOO(fct[index],
+                                             assMotifs[index],
+                                             mOccur[index, ] )
   }
 
   return(fctPrd)
@@ -1754,7 +1763,7 @@ predictGmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage gmeanByeltJack(fctMot, mOccurMot, jack)
+#' @usage gmean_byelt_jack(fctMot, mOccurMot, jack)
 #'
 #' @param fctMot a vector of numeric values of elements belonging
 #'  to a same motif.
@@ -1783,7 +1792,7 @@ predictGmeanByeltLOOXpr <- function(fct, assMotifs, mOccur, xpr) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-gmeanByeltJack <- function(fctMot, mOccurMot, jack) {
+gmean_byelt_jack <- function(fctMot, mOccurMot, jack) {
 
   nbass  <- length(fctMot)
   fctPrd <- numeric(nbass)
@@ -1820,7 +1829,7 @@ gmeanByeltJack <- function(fctMot, mOccurMot, jack) {
 
   } else {
 
-    fctPrd[] <- gmeanByeltLOO(fctMot, mOccurMot)
+    fctPrd[] <- gmean_byelt_LOO(fctMot, mOccurMot)
   }
 
   return(fctPrd)
@@ -1835,7 +1844,7 @@ gmeanByeltJack <- function(fctMot, mOccurMot, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the arithmetic mean of all elements belonging to the same motif.
 #'
-#' @usage predictGmeanByeltJack(fct, assMotifs, mOccur, jack)
+#' @usage predict_gmean_byelt_jack(fct, assMotifs, mOccur, jack)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1866,7 +1875,7 @@ gmeanByeltJack <- function(fctMot, mOccurMot, jack) {
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
+predict_gmean_byelt_jack <- function(fct, assMotifs, mOccur, jack) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1875,7 +1884,7 @@ predictGmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 
     indMot <- which(assMotifs == setMot[mot])
     if (length(indMot) > 1) {
-      fctPrd[indMot] <- gmeanByeltJack(fct[indMot], mOccur[indMot, ], jack)
+      fctPrd[indMot] <- gmean_byelt_jack(fct[indMot], mOccur[indMot, ], jack)
     } else {
       fctPrd[indMot] <- NA
     }
@@ -1894,7 +1903,7 @@ predictGmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 #' @description Take a numeric vector and return the predicted vector
 #'  computed as the geometric mean of all elements belonging to a same motif.
 #'
-#' @usage predictGmeanByeltJackXpr(fct, assMotifs, mOccur, jack, xpr)
+#' @usage predict_gmean_byelt_jack_xpr(fct, assMotifs, mOccur, jack, xpr)
 #'
 #' @param fct a vector of numeric values (assembly properties).
 #'
@@ -1923,12 +1932,11 @@ predictGmeanByeltJack <- function(fct, assMotifs, mOccur, jack) {
 #'     to the motif is lower than \code{jack[1]*jack[2]},
 #'     prediction is computed by Leave-One-Out (LOO).
 #'
-#" @keywords internal
-#' @export
+#' @keywords internal
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictGmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
+predict_gmean_byelt_jack_xpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 
   fctPrd <- numeric(length(assMotifs))
 
@@ -1936,10 +1944,10 @@ predictGmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
   for (ix in seq_along(setXpr)) {
 
     index         <- which(xpr == setXpr[ix])
-    fctPrd[index] <- predictGmeanByeltJack(fct[index],
-                                           assMotifs[index],
-                                           mOccur[index, ],
-                                           jack  )
+    fctPrd[index] <- predict_gmean_byelt_jack(fct[index],
+                                              assMotifs[index],
+                                              mOccur[index, ],
+                                              jack  )
   }
 
   return(fctPrd)
@@ -1949,7 +1957,306 @@ predictGmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 
 #oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 #
-# Public Functions                                                         ####
+# Supplementary assemblages to predict                                     ####
+#
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction of supplementary assemblages computed
+#      amean = by using arithmetic mean
+#      bymot = by motif in a whole (WITHOUT taking into account
+#                                                       species contribution)
+#      by including all assemblies, even the one to predict
+#'
+#' @title Prediction of supplementary assemblages
+#'
+#' @description Take a numeric f.
+#'
+#' @usage predict_amean_bymot_supp(appFct, appMotifs, supMotifs)
+#'
+#' @param appFct a vector of numeric values (assembly properties).
+#'
+#' @param appMotifs a vector of labels of \code{length(appFct)}
+#'  (assembly motifs).
+#'
+#' @param supMotifs a vector of labels of assembly motifs of which values must be predicted.
+#'
+#' @return Return a vector of \code{length(supMotifs)}. The values are
+#'  computed using arithmetic mean of elements belonging to \code{appMotifs}
+#'  and sharing a same motif.
+#'
+#' @details Prediction ...
+#'
+#' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+predict_amean_bymot_supp <- function(appFct, appMotifs, supMotifs) {
+
+  supFct   <- numeric(length(supMotifs))
+  supFct[] <- NA
+
+  setMot <- unique(supMotifs)
+  for (mot in seq_along(setMot)) {
+
+    indSup <- which(supMotifs == setMot[mot])
+    indApp <- which(appMotifs == setMot[mot])
+    if ( (length(indSup) > 0) & (length(indApp) > 0) )
+      supFct[indSup] <- amean(appFct[indApp])
+  }
+
+  return(supFct)
+}
+
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction of supplementary assemblages computed
+#      gmean = by using geometric mean
+#      bymot = by motif in a whole
+#                            (WITHOUT taking into account species contribution)
+#      by including all the assemblies, even the one to predict
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction of supplementary assemblages computed
+#      amean = by using geometric mean
+#      bymot = by motif in a whole (WITHOUT taking into account
+#                                                       species contribution)
+#      by including all assemblies, even the one to predict
+#'
+#' @title Prediction of supplementary assemblages
+#'
+#' @description Take a numeric f.
+#'
+#' @usage predict_gmean_bymot_supp(appFct, appMotifs, supMotifs)
+#'
+#' @param appFct a vector of numeric values (assembly properties).
+#'
+#' @param appMotifs a vector of labels of \code{length(appFct)}
+#'  (assembly motifs).
+#'
+#' @param supMotifs a vector of labels of assembly motifs of which values
+#' must be predicted.
+#'
+#' @return Return a vector of \code{length(supMotifs)}. The values are
+#'  computed using arithmetic mean of elements belonging to \code{appMotifs}
+#'  and sharing a same motif.
+#'
+#' @details Prediction ...
+#'
+#' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+predict_gmean_bymot_supp <- function(appFct, appMotifs, supMotifs) {
+
+  supFct   <- numeric(length(supMotifs))
+  supFct[] <- NA
+
+  setMot <- unique(supMotifs)
+  for (mot in seq_along(setMot)) {
+
+    indSup <- which(supMotifs == setMot[mot])
+    indApp <- which(appMotifs == setMot[mot])
+    if ( (length(indSup) > 0) & (length(indApp) > 0) )
+      supFct[indSup] <- gmean(appFct[indApp])
+  }
+
+  return(supFct)
+}
+
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction of supplementary assemblages computed
+#      amean = by using arithmetic mean
+#      byelt = by motif WITH taking into account species contribution
+#      by including all the assemblies, even the one to predict
+#      for any Function (for instance Fobs)
+#
+#
+#' @title Prediction of supplementary assemblages computed
+#'
+#' @description Take a numeric f.
+#'
+#' @usage predict_amean_byelt_supp(appFct, appMotifs, appOccur,
+#'                              supMotifs, supOccur )
+#'
+#' @param appFct  cccc
+#'
+#' @param appMotifs  cccc
+#'
+#' @param appOccur  cccc
+#'
+#' @param supMotifs  cccc
+#'
+#' @param supOccur  cccc
+#'
+#' @details dd
+#'
+#' @return  cccc
+#'
+#' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+predict_amean_byelt_supp <- function(appFct, appMotifs, appOccur,
+                                     supMotifs, supOccur ) {
+
+  setAppMot <- unique(appMotifs)
+  setSupMot <- unique(supMotifs)
+  setMot    <- sort(union(setAppMot, setSupMot))
+  nbMot     <- length(setMot)
+
+  mfct      <- matrix(NA, nrow = nbMot, ncol = dim(appOccur)[2],
+                      dimnames = list(setMot, colnames(appOccur)))
+
+  for (mot in seq_along(setAppMot)) {
+
+    motif  <- setAppMot[mot]
+    indApp <- which(appMotifs == motif)
+    setElt <- unique(which((appOccur[indApp, , drop = FALSE] == 1),
+                           arr.ind = TRUE)[ , 2])
+
+    for (elt in seq_along(setElt)) {
+      element <- setElt[elt]
+      indElt  <- which(appOccur[indApp, element] == 1)
+      if (length(indElt) > 0)
+        mfct[motif, element] <- amean(appFct[indApp[indElt]])
+    }
+  }
+
+
+  supFct  <- numeric(length(supMotifs))
+  sizeSup <- apply(supOccur, MARGIN = 1, FUN = sum)
+
+  for (mot in seq_along(setSupMot)) {
+    motif     <- setSupMot[mot]
+    indSupMot <- which(supMotifs == motif)
+
+    if (length(indSupMot) > 0) {
+      setSupElt <- unique(which((supOccur[indSupMot, , drop = FALSE] == 1),
+                                arr.ind = TRUE)[ , 2])
+
+      for (elt in seq_along(setSupElt)) {
+        element   <- setSupElt[elt]
+        indSupElt <- which(supOccur[indSupMot, element] == 1)
+
+        if (length(indSupElt) > 0) {
+          index         <- indSupMot[indSupElt]
+          supFct[index] <- supFct[index] + mfct[motif, element]
+        }
+      }
+
+      supFct[indSupMot] <- supFct[indSupMot] / sizeSup[indSupMot]
+    }
+  }
+
+  return(supFct)
+}
+
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction of supplementary assemblages computed
+#      gmean = by using geometric mean
+#      byelt = by motif WITH taking into account species contribution
+#      by including all the assemblies, even the one to predict
+#      for any Function (for instance Fobs)
+#
+#' @title Prediction of supplementary assemblages computed
+#'
+#' @description Take a numeric f.
+#'
+#' @usage predict_gmean_byelt_supp(appFct, appMotifs, appOccur,
+#'                              supMotifs, supOccur )
+#'
+#' @param appFct   cccc
+#'
+#' @param appMotifs  cccc
+#'
+#' @param appOccur  cccc
+#'
+#' @param supMotifs  cccc
+#'
+#' @param supOccur  cccc
+#'
+#' @details dd
+#'
+#' @return  cccc
+#'
+#' @keywords internal
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+predict_gmean_byelt_supp <- function(appFct, appMotifs, appOccur,
+                                     supMotifs, supOccur  ) {
+
+  setAppMot <- unique(appMotifs)
+  setSupMot <- unique(supMotifs)
+  setMot    <- sort(union(setAppMot, setSupMot))
+  nbMot     <- length(setMot)
+
+  mfct      <- matrix(NA, nrow = nbMot, ncol = dim(appOccur)[2],
+                      dimnames = list(setMot, colnames(appOccur)))
+
+  for (mot in seq_along(setAppMot)) {
+
+    motif  <- setAppMot[mot]
+    indApp <- which(appMotifs == motif)
+    setElt <- unique(which((appOccur[indApp, , drop = FALSE] == 1),
+                           arr.ind = TRUE)[ , 2])
+
+    for (elt in seq_along(setElt)) {
+      element <- setElt[elt]
+      indElt  <- which(appOccur[indApp, element] == 1)
+      if (length(indElt) > 0)
+        mfct[motif, element] <- gmean(appFct[indApp[indElt]])
+    }
+  }
+
+
+  supFct   <- numeric(length(supMotifs))
+  supFct[] <- 1
+  sizeSup  <- apply(supOccur, MARGIN = 1, FUN = sum)
+
+  for (mot in seq_along(setSupMot)) {
+
+    motif     <- setSupMot[mot]
+    indSupMot <- which(supMotifs == motif)
+
+    if (length(indSupMot) > 0) {
+      setSupElt <- unique(which((supOccur[indSupMot, , drop = FALSE] == 1),
+                                arr.ind = TRUE)[ , 2])
+
+      for (elt in seq_along(setSupElt)) {
+        element   <- setSupElt[elt]
+        indSupElt <- which(supOccur[indSupMot, element] == 1)
+
+        if (length(indSupElt) > 0) {
+          index         <- indSupMot[indSupElt]
+          supFct[index] <- supFct[index] * mfct[motif, element]
+        }
+      }
+
+      supFct[indSupMot] <- supFct[indSupMot] ^ (1/sizeSup[indSupMot])
+    }
+  }
+
+  return(supFct)
+}
+
+
+
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+#
+# Functions for switch on different options                                ####
 #
 #oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1961,7 +2268,7 @@ predictGmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 #' @description Take a numeric vector and return the predicted vector computed
 #'  as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictCal(fct, assMotifs, mOccur, xpr,
+#' @usage predict_cal(fct, assMotifs, mOccur, xpr,
 #'                   opt.mean = "amean",
 #'                   opt.mod  = "bymot"  )
 #'
@@ -1990,13 +2297,13 @@ predictGmeanByeltJackXpr <- function(fct, assMotifs, mOccur, jack, xpr) {
 #'      number of elements belonging to the motif is lower than
 #'       \code{jack[1]*jack[2]}, prediction is computed by Leave-One-Out (LOO).
 #'
-#' @export
+#' @keywords internal
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictCal <- function(fct, assMotifs, mOccur, xpr,
-                       opt.mean = "amean",
-                       opt.mod  = "bymot") {
+predict_cal <- function(fct, assMotifs, mOccur, xpr,
+                        opt.mean = "amean",
+                        opt.mod  = "bymot") {
 
   optmean <- "amean"
   if (opt.mean == "gmean") optmean <- "gmean"
@@ -2012,22 +2319,22 @@ predictCal <- function(fct, assMotifs, mOccur, xpr,
   return(
     switch(option,
            amean.bymot. =
-             predictAmeanBymot(fct, assMotifs),
+             predict_amean_bymot(fct, assMotifs),
            amean.bymot.xpr =
-             predictAmeanBymotXpr(fct, assMotifs, xpr),
+             predict_amean_bymot_xpr(fct, assMotifs, xpr),
            gmean.bymot. =
-             predictGmeanBymot(fct, assMotifs),
+             predict_gmean_bymot(fct, assMotifs),
            gmean.bymot.xpr =
-             predictGmeanBymotXpr(fct, assMotifs, xpr),
+             predict_gmean_bymot_xpr(fct, assMotifs, xpr),
 
            amean.byelt. =
-             predictAmeanByelt(fct, assMotifs, mOccur),
+             predict_amean_byelt(fct, assMotifs, mOccur),
            amean.byelt.xpr =
-             predictAmeanByeltXpr(fct, assMotifs, mOccur, xpr),
+             predict_amean_byelt_xpr(fct, assMotifs, mOccur, xpr),
            gmean.byelt. =
-             predictGmeanByelt(fct, assMotifs, mOccur),
+             predict_gmean_byelt(fct, assMotifs, mOccur),
            gmean.byelt.xpr =
-             predictGmeanByeltXpr(fct, assMotifs, mOccur, xpr)  )
+             predict_gmean_byelt_xpr(fct, assMotifs, mOccur, xpr)  )
   )
 }
 
@@ -2040,7 +2347,7 @@ predictCal <- function(fct, assMotifs, mOccur, xpr,
 #' @description Take a numeric vector and return the predicted vector
 #' computed as the arithmetic mean of all elements belonging to a same motif.
 #'
-#' @usage predictPrd(fct, assMotifs, mOccur, xpr,
+#' @usage predict_prd(fct, assMotifs, mOccur, xpr,
 #'                   opt.mean = "amean",
 #'                   opt.mod  = "bymot",
 #'                   opt.jack = FALSE, jack = c(2, 5)  )
@@ -2075,14 +2382,14 @@ predictCal <- function(fct, assMotifs, mOccur, xpr,
 #'  the motif is lower than \code{jack[1]*jack[2]}, prediction is
 #'  computed by Leave-One-Out (LOO).
 #'
-#' @export
+#' @keywords internal
 #'
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-predictPrd <- function(fct, assMotifs, mOccur, xpr,
-                       opt.mean = "amean",
-                       opt.mod  = "bymot",
-                       opt.jack = FALSE,   jack = c(2, 5)) {
+predict_prd <- function(fct, assMotifs, mOccur, xpr,
+                        opt.mean = "amean",
+                        opt.mod  = "bymot",
+                        opt.jack = FALSE,   jack = c(2, 5)) {
 
   optmean <- "amean"
   if (opt.mean == "gmean") optmean <- "gmean"
@@ -2101,45 +2408,128 @@ predictPrd <- function(fct, assMotifs, mOccur, xpr,
   return(
     switch(option,
            amean.bymot.. =
-             predictAmeanBymotLOO(fct, assMotifs),
+             predict_amean_bymot_LOO(fct, assMotifs),
            amean.bymot..xpr =
-             predictAmeanBymotLOOXpr(fct, assMotifs, xpr),
+             predict_amean_bymot_LOO_xpr(fct, assMotifs, xpr),
            amean.bymot.jack. =
-             predictAmeanBymotJack(fct, assMotifs, jack),
+             predict_amean_bymot_jack(fct, assMotifs, jack),
            amean.bymot.jack.xpr =
-             predictAmeanBymotJackXpr(fct, assMotifs, jack, xpr),
+             predict_amean_bymot_jack_xpr(fct, assMotifs, jack, xpr),
 
            gmean.bymot.. =
-             predictGmeanBymotLOO(fct, assMotifs),
+             predict_gmean_bymot_LOO(fct, assMotifs),
            gmean.bymot..xpr =
-             predictGmeanBymotLOOXpr(fct, assMotifs, xpr),
+             predict_gmean_bymot_LOO_xpr(fct, assMotifs, xpr),
            gmean.bymot.jack. =
-             predictGmeanBymotJack(fct, assMotifs, jack),
+             predict_gmean_bymot_jack(fct, assMotifs, jack),
            gmean.bymot.jack.xpr =
-             predictGmeanBymotJackXpr(fct, assMotifs, jack, xpr),
+             predict_gmean_bymot_jack_xpr(fct, assMotifs, jack, xpr),
 
            amean.byelt.. =
-             predictAmeanByeltLOO(fct, assMotifs, mOccur),
+             predict_amean_byelt_LOO(fct, assMotifs, mOccur),
            amean.byelt..xpr =
-             predictAmeanByeltLOOXpr(fct, assMotifs, mOccur, xpr),
+             predict_amean_byelt_LOO_xpr(fct, assMotifs, mOccur, xpr),
            amean.byelt.jack. =
-             predictAmeanByeltJack(fct, assMotifs, mOccur, jack),
+             predict_amean_byelt_jack(fct, assMotifs, mOccur, jack),
            amean.byelt.jack.xpr =
-             predictAmeanByeltJackXpr(fct, assMotifs, mOccur, jack, xpr),
+             predict_amean_byelt_jack_xpr(fct, assMotifs, mOccur, jack, xpr),
 
            gmean.byelt.. =
-             predictGmeanByeltLOO(fct, assMotifs, mOccur),
+             predict_gmean_byelt_LOO(fct, assMotifs, mOccur),
            gmean.byelt..xpr =
-             predictGmeanByeltLOOXpr(fct, assMotifs, mOccur, xpr),
+             predict_gmean_byelt_LOO_xpr(fct, assMotifs, mOccur, xpr),
            gmean.byelt.jack. =
-             predictGmeanByeltJack(fct, assMotifs, mOccur, jack),
+             predict_gmean_byelt_jack(fct, assMotifs, mOccur, jack),
            gmean.byelt.jack.xpr =
-             predictGmeanByeltJackXpr(fct, assMotifs, mOccur, jack, xpr) )
+             predict_gmean_byelt_jack_xpr(fct, assMotifs, mOccur, jack, xpr) )
   )
 }
 
 
 
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#  Prediction computed by excluding (LOO) the assembly to predict
+#
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#'
+#' @title Arithmetic mean (amean) by motif (bymot) by jackknife (jack) over
+#'  several experiments (xpr)
+#'
+#' @description Take a numeric vector and return the predicted vector computed
+#'  as the arithmetic mean of all elements belonging to a same motif.
+#'
+#' @usage predict_supp(appFct, appMotifs, appOccur,
+#'                            supMotifs, supOccur,
+#'                            opt.mean = "amean",
+#'                            opt.mod  = "bymot"  )
+#'
+#' @param appFct a vector of numeric values (assembly properties).
+#'
+#' @param appMotifs a vector of labels of \code{length(fct)} (assembly motifs).
+#'
+#' @param appOccur a matrix of occurrence (occurrence of elements).
+#' Its first dimension equals to \code{length(fct)}. Its second dimension
+#'  equals to the number of elements.
+#'
+#' @param supMotifs a vector of labels of \code{length(fct)} (assembly motifs).
+#'
+#' @param supOccur a matrix of occurrence (occurrence of elements).
+#' Its first dimension equals to \code{length(fct)}. Its second dimension
+#'  equals to the number of elements.
+#'
+#' @param opt.mean equal to \code{"amean"} (by default) or \code{"gmean"}.
+#'
+#' @param opt.mod  equal to \code{"bymot"} (by default) or \code{"byelt"}.
+#'
+#' @return Return the arithmetic mean of a vector, as standard \code{mean}
+#'  function.
+#'
+#' @details Prediction is computed using arithmetic mean \code{amean} by motif
+#'  \code{bymot} in a whole (WITHOUT taking into account species contribution).
+#'   The elements belonging to a same motif are divided into \code{jack[2]}
+#'    subsets of \code{jack[1]} elements. Prediction is computed by excluding
+#'     \code{jack[1]} elements, of which the element to predict. If the total
+#'      number of elements belonging to the motif is lower than
+#'       \code{jack[1]*jack[2]}, prediction is computed by Leave-One-Out (LOO).
+#'
+#' @keywords internal
+#'
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+predict_supp <- function(appFct, appMotifs, appOccur,
+                         supMotifs, supOccur,
+
+                         opt.mean = "amean",
+                         opt.mod  = "bymot"  ) {
+
+  option <- paste(opt.mean, opt.mod, sep = ".")
+
+  return(
+    switch(option,
+           amean.bymot =
+             predict_amean_bymot_supp(appFct, appMotifs, supMotifs) ,
+           gmean.bymot =
+             predict_gmean_bymot_supp(appFct, appMotifs, supMotifs) ,
+
+           amean.byelt =
+             predict_amean_byelt_supp(appFct, appMotifs, appOccur,
+                                      supMotifs, supOccur) ,
+           gmean.byelt =
+             predict_gmean_byelt_supp(appFct, appMotifs, appOccur,
+                                      supMotifs, supOccur)
+    )
+  )
+}
+
+
+
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+#
+#                   END of FILE
+#
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
